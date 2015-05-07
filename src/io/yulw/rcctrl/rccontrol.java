@@ -1,45 +1,63 @@
 package io.yulw.rcctrl;
 import java.util.*;
 import java.net.*;
+
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
 import android.content.*;
 import android.service.*;
 import java.io.IOException;
-
 public class rccontrol 
 {
 	private HashMap<String, Integer> m_runningApps;
     private InetAddress m_host;
-    private DatagramSocket m_socket;
     private int m_port;
+    private DatagramSocket m_socket;
     private final String TAG="rccontrol";
-    String m_hostname="localhost";
-    public int getPort() {
-    	return m_port;
+    private rcpara m_para;
+    public rccontrol(rcpara para) {
+    	m_para=para;
+    	m_host=para.getHost();
+    	m_port=para.getPort();
+    	try {
+			m_socket=new DatagramSocket(m_port);
+			m_socket.setBroadcast(true);
+			m_socket.setReuseAddress(true);
+			m_socket.setSoTimeout(1000);
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
-    rccontrol(int port) {
-    	m_port=port;
+    public rcpara getPara() {
+    	return m_para;
     }
-    void send(String msg) {
-    	DatagramPacket packet=new DatagramPacket(msg.getBytes(),msg.length(),m_host,m_port);
-        packet.setLength(msg.length());
-    }
-    InetAddress getBroadcastAddress() throws IOException 
+    public boolean sendPacket(String msg)
     {
-    	WifiManager wifi = (WifiManager)this.getSystemService(Context.WIFI_SERVICE);
-        DhcpInfo dhcp = wifi.getDhcpInfo();
-        if (dhcp == null) {
-          Log.d(TAG, "Could not get dhcp info");
-          return null;
-        }
-        int broadcast = (dhcp.ipAddress & dhcp.netmask) | ~dhcp.netmask;
-        byte[] quads = new byte[4];
-        for (int k = 0; k < 4; k++)
-          quads[k] = (byte) ((broadcast >> k * 8) & 0xFF);
-        return InetAddress.getByAddress(quads);
-
+    	DatagramPacket packet=new DatagramPacket(msg.getBytes(),msg.length(),m_host,m_port);
+    	try {
+    		Log.d(TAG,"Sending data."+m_host.toString()+":"+m_port);
+			m_socket.send(packet);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Log.d(TAG,"Error in Sending Message.Error: "+e.getMessage());
+			return false;
+		}
+    	return true;
     }
-
+    public String getPacket() 
+    {
+    	DatagramPacket packet=new DatagramPacket(new byte[100],100);
+    	try {
+			m_socket.receive(packet);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Log.d(TAG,"Error in Getting Message.Error: "+e.getMessage());
+			return null;
+		}
+    	return new String(packet.getData(),0,packet.getLength());
+    }
 }
