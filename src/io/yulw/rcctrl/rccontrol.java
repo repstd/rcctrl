@@ -10,27 +10,31 @@ import java.io.IOException;
 public class rccontrol 
 {
 	private HashMap<String, Integer> m_runningApps;
-    private InetAddress m_host;
-    private int m_port;
     private DatagramSocket m_socket;
     private final String TAG="rccontrol";
     private rcpara m_para;
-    public rccontrol(rcpara para) {
-    	m_para=para;
-    	m_host=para.getHost();
-    	m_port=para.getPort();
-    	open();
+    private static rccontrol instance = null;
+    private rccontrol() 
+    {
+    	Log.d(TAG,"rccontrol instance init.");
+    }
+    public static rccontrol instance() 
+    {
+    	if(instance==null) {
+    		instance=new rccontrol();
+    	}
+    	return instance;
     }
     public rcpara getPara() {
     	return m_para;
     }
-    public boolean sendPacket(String msg)
+    public synchronized boolean sendPacket(String msg)
     {
     	if(msg=="")
     		return false;
     	try {
-    		DatagramPacket packet=new DatagramPacket(msg.getBytes(),msg.length(),m_host,m_port);
-    		Log.d(TAG,"Sending data."+m_host.toString()+":"+m_port);
+    		DatagramPacket packet=new DatagramPacket(msg.getBytes(),msg.length(),getPara().getHost(),getPara().getPort());
+    		Log.d(TAG,"Sending data."+getPara().getHost().toString()+":"+getPara().getPort()+" Size: "+msg.length()+1);
 			m_socket.send(packet);
 		} 
     	catch(SocketTimeoutException e) {
@@ -38,7 +42,6 @@ public class rccontrol
 			Log.d(TAG,"SocketTImedoutException in Sending Message.Error: "+e.getMessage());
     	}
     	catch(java.net.SocketException e) {
-
 			e.printStackTrace();
 			Log.d(TAG,"SocketException in Sending Message.Error: "+e.getMessage());
     	}
@@ -49,7 +52,7 @@ public class rccontrol
 		}
     	return true;
     }
-    public String getPacket() 
+    public synchronized String getPacket() 
     {
     	DatagramPacket packet=new DatagramPacket(new byte[100],100);
     	try {
@@ -62,10 +65,16 @@ public class rccontrol
 		}
     	return new String(packet.getData(),0,packet.getLength());
     }
-    public void open()
+    public void reset(rcpara para)
+    {
+    	m_para=para;
+    	//reset the sockets
+    	open();
+    }
+    public synchronized void open()
     {
     	try {
-			m_socket=new DatagramSocket(m_port);
+			m_socket=new DatagramSocket(getPara().getPort());
 			m_socket.setBroadcast(true);
 			m_socket.setReuseAddress(true);
 			m_socket.setSoTimeout(1000);
@@ -75,10 +84,10 @@ public class rccontrol
 			Log.d(TAG,"Error in Open Socket.Error: "+e.getMessage());
 		}
     }
-    public boolean isDead() {
+    public boolean isClosed() {
     	return m_socket.isClosed();
     }
-    public void close(){
+    public synchronized void close(){
     	try {
 			if (!m_socket.isClosed())
 				m_socket.close();

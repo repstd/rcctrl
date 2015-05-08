@@ -10,40 +10,25 @@ import android.widget.EditText;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
-import android.widget.AdapterView.OnItemClickListener;
-import android.view.*;
-import io.yulw.test.*;
-import android.net.*;
 import android.net.wifi.*;
 import android.content.*;
 import android.util.*;
+import android.view.Menu;
+import android.view.MenuItem;
 import java.util.*;
-class worker extends Thread
-{
-	private rccontrol m_c;
-	private String m_msg;
-	public worker(rccontrol ctrl,String msg) {
-		m_c=ctrl;
-		m_msg=msg;
-	}
-	public void run() {
-		m_c.sendPacket(m_msg);
-	}
-}
 public class MainActivity extends Activity 
 {
 	private final String TAG="MainActivity.";
-	private WifiManager m_wifi=null;
 	private Switch m_switchOp;
 	private Button m_buttonSend;
 	private EditText m_editTextCmd;
-	private rccontrol m_ctrl;
-	private rcpara m_para;
-	private final int RCBROADCAST_PORT=6000;
+	private final int RCBROADCAST_PORT=20715;
 	private String m_cmd_name="null";
 	private String m_cmd_op="off";
 	private HashMap<String,String> m_mapRunningApps=new HashMap<String,String>();
 
+	private WifiManager m_wifi=null;
+	private rcpara m_para;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,9 +42,9 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-					String msg=encodeMsg();
-					Log.d(TAG,"Onclick.Msg to be sent: "+msg);
-					new worker(m_ctrl,msg).start();
+				String msg=encodeMsg();
+				Log.d(TAG,"Onclick.Msg to be sent: "+msg);
+				new worker(rccontrol.instance(),msg).start();
 			}
 		});
 		m_switchOp.setOnCheckedChangeListener(new OnCheckedChangeListener()
@@ -101,7 +86,7 @@ public class MainActivity extends Activity
 		super.onStart();
 		Log.d(TAG,"onStartIn");
 		m_para=new rcpara(m_wifi,null,RCBROADCAST_PORT);
-		m_ctrl=new rccontrol(m_para);
+		rccontrol.instance().reset(m_para);
 	}
 
 	@Override
@@ -116,8 +101,8 @@ public class MainActivity extends Activity
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.d(TAG,"onResume.");
-		if(m_ctrl.isDead())
-			m_ctrl.open();
+		if(rccontrol.instance().isClosed())
+			rccontrol.instance().open();
 	}
 	@Override
 	protected void onStop() 
@@ -125,7 +110,7 @@ public class MainActivity extends Activity
 		// TODO Auto-generated method stub
 		super.onStop();
 		Log.d(TAG,"onStop.");
-		m_ctrl.close();
+		rccontrol.instance().close();
 	}
 	@Override
 	protected void onDestroy() 
@@ -133,7 +118,7 @@ public class MainActivity extends Activity
 		// TODO Auto-generated method stub
 		super.onStop();
 		Log.d(TAG,"onDestroy.");
-		m_ctrl.close();
+		rccontrol.instance().close();
 	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -157,14 +142,26 @@ public class MainActivity extends Activity
 
 		if(m_mapRunningApps.get(m_cmd_name)==null&&m_cmd_op=="on") {
 			m_mapRunningApps.put(m_cmd_name,m_cmd_op);
-			msg=m_cmd_name+"_"+m_cmd_op;
+			msg=m_cmd_name+"#"+m_cmd_op;
 		}
 		else if(m_mapRunningApps.get(m_cmd_name)!=null&&m_cmd_op=="off"){
 			m_mapRunningApps.remove(m_cmd_name);
-			msg=m_cmd_name+"_"+m_cmd_op;
+			msg=m_cmd_name+"#"+m_cmd_op;
 		}
 		else
 			msg="";
 		return msg;
+	}
+	private class worker extends Thread
+	{
+		private rccontrol m_c;
+		private String m_msg;
+		public worker(rccontrol ctrl,String msg) {
+			m_c=ctrl;
+			m_msg=msg;
+		}
+		public void run() {
+			m_c.sendPacket(m_msg);
+		}
 	}
 }

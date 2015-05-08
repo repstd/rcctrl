@@ -20,7 +20,10 @@ public class rcpara
 		m_port=port;
 		Log.d(TAG,"rcpara init start.");
 		try {
-			m_broadcastAddr = getBroadcastAddr(m_wifi);
+			if(hostname.equals(null))
+				m_broadcastAddr = getBroadcastAddr(m_wifi);
+			else
+				m_broadcastAddr=InetAddress.getByName(m_hostname);
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.d(TAG,"Error in calculate broadcast address.Error: "+e.getMessage());
