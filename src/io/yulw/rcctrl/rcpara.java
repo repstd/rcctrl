@@ -20,7 +20,7 @@ public class rcpara
 		m_port=port;
 		Log.d(TAG,"rcpara init start.");
 		try {
-			if(hostname.equals(null))
+			if(hostname==null)
 				m_broadcastAddr = getBroadcastAddr(m_wifi);
 			else
 				m_broadcastAddr=InetAddress.getByName(m_hostname);

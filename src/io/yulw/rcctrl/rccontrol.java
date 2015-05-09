@@ -61,12 +61,14 @@ public class rccontrol
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			Log.d(TAG,"Error in Getting Message.Error: "+e.getMessage());
-			return null;
+			return "Error";
 		}
-    	return new String(packet.getData(),0,packet.getLength());
+        return "Test";
+    	//return new String(packet.getData(),0,packet.getLength());
     }
     public void reset(rcpara para)
     {
+    	close();
     	m_para=para;
     	//reset the sockets
     	open();
@@ -74,10 +76,11 @@ public class rccontrol
     public synchronized void open()
     {
     	try {
+			//m_socket=new DatagramSocket(getPara().getPort(),getPara().getHost());
 			m_socket=new DatagramSocket(getPara().getPort());
 			m_socket.setBroadcast(true);
 			m_socket.setReuseAddress(true);
-			m_socket.setSoTimeout(1000);
+			m_socket.setSoTimeout(0);
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -96,4 +99,5 @@ public class rccontrol
 			Log.d(TAG,"Error in Closing The Socket.Error: "+e.getMessage());
 		}	
     }
+
 }

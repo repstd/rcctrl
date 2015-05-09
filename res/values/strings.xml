@@ -4,6 +4,8 @@
     <string name="app_name">rcctrl</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="rcctrlhint">MessageToSend</string>
+    <string name="rcctrlhint">program to control</string>
+    <string name="action_log">OpenLogs</string>
+    <string name="alert_dialog_ok">Ok</string>
 
 </resources>

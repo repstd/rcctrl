@@ -20,29 +20,42 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f040000;
         public static final int activity_vertical_margin=0x7f040001;
+        public static final int log_text_maxHeight=0x7f040002;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
         public static final int images=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080004;
-        public static final int button_send=0x7f080002;
-        public static final int editText1=0x7f080000;
-        public static final int switch_on_off=0x7f080001;
-        public static final int textView1=0x7f080003;
+        public static final int action_log=0x7f090008;
+        public static final int action_settings=0x7f090007;
+        public static final int button_send=0x7f090002;
+        public static final int editText1=0x7f090000;
+        public static final int logs_text=0x7f090004;
+        public static final int main_settings_editText_addr=0x7f090005;
+        public static final int main_settings_editText_port=0x7f090006;
+        public static final int switch_on_off=0x7f090001;
+        public static final int textView1=0x7f090003;
+    }
+    public static final class integer {
+        public static final int log_text_maxLines=0x7f050001;
+        public static final int log_text_minLines=0x7f050000;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int activity_main_logwindow=0x7f030001;
+        public static final int activity_main_settings=0x7f030002;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050002;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050001;
-        public static final int rcctrlhint=0x7f050003;
+        public static final int action_log=0x7f060004;
+        public static final int action_settings=0x7f060002;
+        public static final int alert_dialog_ok=0x7f060005;
+        public static final int app_name=0x7f060000;
+        public static final int hello_world=0x7f060001;
+        public static final int rcctrlhint=0x7f060003;
     }
     public static final class style {
         /** 
@@ -66,10 +79,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }

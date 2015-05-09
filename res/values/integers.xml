@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="log_text_minLines">10</integer>
+    <integer name="log_text_maxLines">30</integer>
+</resources>
