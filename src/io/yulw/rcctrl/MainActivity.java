@@ -1,9 +1,9 @@
 package io.yulw.rcctrl;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,12 +20,15 @@ import android.util.*;
 import android.app.AlertDialog.*;
 import java.util.*;
 
+@SuppressLint("InflateParams")
 public class MainActivity extends Activity {
 	private final String TAG = "MainActivity.";
 	private Switch m_switchOp;
 	private Button m_buttonSend;
 	private EditText m_editTextCmd;
 	private final int RCBROADCAST_PORT = 20715;
+	private int m_last_port = RCBROADCAST_PORT;
+	private String m_last_host = "";
 	private String m_cmd_name = "null";
 	private String m_cmd_op = "off";
 	private HashMap<String, String> m_mapRunningApps = new HashMap<String, String>();
@@ -60,6 +63,9 @@ public class MainActivity extends Activity {
 				String msg = encodeMsg();
 				Log.d(TAG, "Onclick.Msg to be sent: " + msg);
 				new worker(rccontrol.instance(), msg).start();
+				rcutil.showMessageAsToast(getApplicationContext(), "Sending "
+						+ msg + " to " + getLastHost().toString() + ":"
+						+ getLastPort());
 			}
 		});
 		m_switchOp.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -76,7 +82,7 @@ public class MainActivity extends Activity {
 				Log.d(TAG, "Switch Changed to: " + m_cmd_op);
 			}
 		});
-		//getLayoutInflater().inflate(R.layout.activity_main_logwindow, null);
+		// getLayoutInflater().inflate(R.layout.activity_main_logwindow, null);
 	}
 
 	@Override
@@ -98,8 +104,11 @@ public class MainActivity extends Activity {
 				String newLog = msg.getData().getString("newLog");
 				Log.d(TAG, "newLog: " + newLog);
 				try {
-					View viewLogs = (View)io.yulw.rcctrl.MainActivity.this.getLayoutInflater().inflate(R.layout.activity_main_logwindow, null);
-					TextView tv = (TextView) viewLogs .findViewById(R.id.logs_text);
+					View viewLogs = (View) io.yulw.rcctrl.MainActivity.this
+							.getLayoutInflater().inflate(
+									R.layout.activity_main_logwindow, null);
+					TextView tv = (TextView) viewLogs
+							.findViewById(R.id.logs_text);
 					tv.setText(newLog);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -202,7 +211,8 @@ public class MainActivity extends Activity {
 							.findViewById(R.id.main_settings_editText_port);
 					String addr = addrText.getText().toString();
 					int port = Integer.parseInt(portText.getText().toString());
-					m_para = new rcpara(m_wifi, addr, port);
+					update(addr, port);
+					m_para = new rcpara(m_wifi, getLastHost(), getLastPort());
 					rccontrol.instance().reset(m_para);
 				} catch (Exception e) {
 					// TODO: handle exception
@@ -218,10 +228,13 @@ public class MainActivity extends Activity {
 
 	private void openLogWindow() {
 		Builder builder = new Builder(this);
-		View viewLogs = (View) this.getLayoutInflater().inflate( R.layout.activity_main_logwindow, null);
-		//View viewLogs=(View)this.findViewById(R.layout.activity_main_logwindow);
+		View viewLogs = (View) this.getLayoutInflater().inflate(
+				R.layout.activity_main_logwindow, null);
+		// View
+		// viewLogs=(View)this.findViewById(R.layout.activity_main_logwindow);
 		builder.setTitle("MessageFromHosts");
-		((TextView)viewLogs.findViewById(R.id.logs_text)).append(m_logUpdatingSvr.getLogs());
+		((TextView) viewLogs.findViewById(R.id.logs_text))
+				.append(m_logUpdatingSvr.getLogs());
 		builder.setView(viewLogs);
 		builder.setPositiveButton("Close", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
@@ -240,8 +253,31 @@ public class MainActivity extends Activity {
 			m_c = ctrl;
 			m_msg = msg;
 		}
+
 		public void run() {
 			m_c.sendPacket(m_msg);
 		}
+	}
+
+	private int getLastPort() {
+		return m_last_port;
+	}
+
+	private void updateLastPort(int port) {
+		m_last_port = port;
+	}
+
+	private String getLastHost() {
+		return m_last_host;
+	}
+
+	private void updateLastHost(String h) {
+		m_last_host = h;
+	}
+
+	private void update(String h, int port) {
+		if (h != null)
+			updateLastHost(h);
+		updateLastPort(port);
 	}
 }

@@ -30,7 +30,8 @@ class rcreceiver extends Thread {
 	}
 
 	public void run() {
-		while (true)
+		int cnt=100;
+		while (cnt-->0)
 		{
 			byte[] buf = new byte[100];
 			DatagramPacket packet = new DatagramPacket(buf, buf.length);
@@ -39,10 +40,10 @@ class rcreceiver extends Thread {
 					m_cxt.appendBuffer(new String("waiting..."));
 				else
 					m_cxt.appendBuffer(new String("rcserver is null"));
-				 //m_svr.receive(packet);
-				 //m_cxt.appendBuffer(packet.getAddress().toString()+"#"+packet.getData().toString());
-				 String newbuf=rccontrol.instance().getPacket();
-				 m_cxt.appendBuffer(newbuf);
+				 m_svr.receive(packet);
+				 m_cxt.appendBuffer(packet.getAddress().toString()+"#"+packet.getData().toString());
+				 //String newbuf=rccontrol.instance().getPacket();
+				 //m_cxt.appendBuffer(newbuf);
 			}
 			catch (Exception e) {
 				// TODO Auto-generated catch block
