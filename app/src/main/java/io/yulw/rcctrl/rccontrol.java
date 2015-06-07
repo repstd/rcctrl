@@ -5,7 +5,6 @@ import java.net.*;
 import android.net.*;
 import android.util.Log;
 import android.content.*;
-import android.service.*;
 import java.io.IOException;
 public class rccontrol 
 {
