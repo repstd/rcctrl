@@ -1,6 +1,6 @@
 package io.yulw.test;
-import io.yulw.rcctrl.rccontrol;
-import io.yulw.rcctrl.rcpara;
+import io.yulw.rcctrl.utils.rccontrol;
+import io.yulw.rcctrl.utils.rcpara;
 import android.net.wifi.*;
 public class testClient extends Thread
 {

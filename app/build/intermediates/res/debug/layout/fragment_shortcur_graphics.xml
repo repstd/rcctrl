@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ralativelayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_shortcut_graphics_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</Ralativelayout>
+<!-- From: file:/C:/Users/yulw/StudioWorkspace/rcctrl/app/src/main/res/layout/fragment_shortcur_graphics.xml -->

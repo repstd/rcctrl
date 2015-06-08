@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/fragment_system_setting_layout">
+
+    <ImageView
+        android:id="@+id/fragment_system_setting_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"/>
+
+    <TextView
+        android:id="@+id/fragment_system_setting_textView"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:text="@string/fragment_general_setting_description"
+        android:textAlignment="center"
+        android:textColor="#ffff3c48"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/fragment_system_setting_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="addr"
+        android:ems="10" >
+        <requestFocus />
+    </EditText>
+    <EditText
+        android:id="@+id/framgment_system_setting_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="port"
+        android:ems="10"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/framgment_system_setting_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finished Setting"/>
+</LinearLayout>
+<!-- From: file:/C:/Users/yulw/StudioWorkspace/rcctrl/app/src/main/res/layout/fragment_system_settings.xml -->

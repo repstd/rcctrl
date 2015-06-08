@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="https://schemes.android.com/tools"
+    android:id="@+id/fragment_menu_listView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/material_blue_grey_900"
+    android:dividerHeight="2dp"
+    tools:context=".FragmentDrawerMenu" />
+<!-- From: file:/C:/Users/yulw/StudioWorkspace/rcctrl/app/src/main/res/layout/screen_fragment_menu.xml -->
