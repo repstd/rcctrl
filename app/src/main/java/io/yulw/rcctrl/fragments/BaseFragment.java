@@ -12,7 +12,6 @@ public abstract  class BaseFragment extends Fragment {
     public BaseFragment() {
         super();
         mName="BaseFragment";
-        mLayoutId=-1;
     }
 
     @Override

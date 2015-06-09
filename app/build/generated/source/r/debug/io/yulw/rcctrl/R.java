@@ -17,8 +17,9 @@ public final class R {
         public static final int abc_slide_out_top=0x7f040005;
     }
     public static final class array {
-        public static final int screen_home_view_fragment_menu_titles=0x7f0a0000;
-        public static final int screen_home_view_pager_tabs_titles=0x7f0a0001;
+        public static final int fragment_shortcuts_titles=0x7f0a0000;
+        public static final int screen_home_view_fragment_menu_titles=0x7f0a0001;
+        public static final int screen_home_view_pager_tabs_titles=0x7f0a0002;
     }
     public static final class attr {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1534,10 +1535,11 @@ containing a value of this type.
         public static final int background=0x7f020033;
         public static final int background_tab=0x7f020034;
         public static final int framgment_background=0x7f020035;
-        public static final int ic_launcher=0x7f020036;
-        public static final int images=0x7f020037;
-        public static final int shadow=0x7f020038;
-        public static final int shadow_mini=0x7f020039;
+        public static final int ic_ab_drawer=0x7f020036;
+        public static final int ic_launcher=0x7f020037;
+        public static final int images=0x7f020038;
+        public static final int shadow=0x7f020039;
+        public static final int shadow_mini=0x7f02003a;
     }
     public static final class id {
         public static final int action_bar=0x7f0c0032;
@@ -1548,13 +1550,13 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0c0020;
         public static final int action_bar_title=0x7f0c001f;
         public static final int action_context_bar=0x7f0c0033;
-        public static final int action_log=0x7f0c005c;
+        public static final int action_log=0x7f0c005e;
         public static final int action_menu_divider=0x7f0c0002;
         public static final int action_menu_presenter=0x7f0c0003;
         public static final int action_mode_bar=0x7f0c002f;
         public static final int action_mode_bar_stub=0x7f0c002e;
         public static final int action_mode_close_button=0x7f0c0021;
-        public static final int action_settings=0x7f0c005b;
+        public static final int action_settings=0x7f0c005d;
         public static final int activity_chooser_view_content=0x7f0c0022;
         public static final int always=0x7f0c0017;
         public static final int beginning=0x7f0c0014;
@@ -1571,19 +1573,21 @@ containing a value of this type.
         public static final int end=0x7f0c0015;
         public static final int expand_activities_button=0x7f0c0023;
         public static final int expanded_menu=0x7f0c0029;
-        public static final int fragment_default_button_send=0x7f0c004a;
-        public static final int fragment_default_editText=0x7f0c0048;
-        public static final int fragment_default_layout=0x7f0c0047;
-        public static final int fragment_default_switch_on_off=0x7f0c0049;
-        public static final int fragment_menu_listView=0x7f0c0053;
+        public static final int fragment_default_button_send=0x7f0c0049;
+        public static final int fragment_default_editText=0x7f0c0047;
+        public static final int fragment_default_layout=0x7f0c0046;
+        public static final int fragment_default_switch_on_off=0x7f0c0048;
+        public static final int fragment_menu_listView=0x7f0c0055;
         public static final int fragment_shorcut_video_layout=0x7f0c004c;
+        public static final int fragment_shorrcuts_layout=0x7f0c004d;
         public static final int fragment_shortcut_graphics_layout=0x7f0c004b;
-        public static final int fragment_system_setting_editText=0x7f0c0050;
-        public static final int fragment_system_setting_imageView=0x7f0c004e;
-        public static final int fragment_system_setting_layout=0x7f0c004d;
-        public static final int fragment_system_setting_textView=0x7f0c004f;
-        public static final int framgment_system_setting_button=0x7f0c0052;
-        public static final int framgment_system_setting_editText=0x7f0c0051;
+        public static final int fragment_shortcut_listView=0x7f0c004e;
+        public static final int fragment_system_setting_editText=0x7f0c0052;
+        public static final int fragment_system_setting_imageView=0x7f0c0050;
+        public static final int fragment_system_setting_layout=0x7f0c004f;
+        public static final int fragment_system_setting_textView=0x7f0c0051;
+        public static final int framgment_system_setting_button=0x7f0c0054;
+        public static final int framgment_system_setting_editText=0x7f0c0053;
         public static final int home=0x7f0c0004;
         public static final int homeAsUp=0x7f0c000d;
         public static final int icon=0x7f0c0027;
@@ -1591,9 +1595,9 @@ containing a value of this type.
         public static final int image=0x7f0c0024;
         public static final int listMode=0x7f0c0009;
         public static final int list_item=0x7f0c0026;
-        public static final int logs_text=0x7f0c0044;
-        public static final int main_settings_editText_addr=0x7f0c0045;
-        public static final int main_settings_editText_port=0x7f0c0046;
+        public static final int logs_text=0x7f0c0043;
+        public static final int main_settings_editText_addr=0x7f0c0044;
+        public static final int main_settings_editText_port=0x7f0c0045;
         public static final int middle=0x7f0c0016;
         public static final int mini=0x7f0c0013;
         public static final int never=0x7f0c001a;
@@ -1602,13 +1606,13 @@ containing a value of this type.
         public static final int progress_circular=0x7f0c0005;
         public static final int progress_horizontal=0x7f0c0006;
         public static final int radio=0x7f0c002c;
-        public static final int screen_default_navigation_drawer=0x7f0c005a;
-        public static final int screen_drawer=0x7f0c0055;
-        public static final int screen_fragment_container=0x7f0c0059;
-        public static final int screen_home_layout=0x7f0c0054;
-        public static final int screen_home_pager_sliding_tab=0x7f0c0057;
-        public static final int screen_home_view_pager=0x7f0c0058;
-        public static final int screen_toolbar=0x7f0c0056;
+        public static final int screen_default_navigation_drawer=0x7f0c005c;
+        public static final int screen_drawer=0x7f0c0057;
+        public static final int screen_fragment_container=0x7f0c005b;
+        public static final int screen_home_layout=0x7f0c0056;
+        public static final int screen_home_pager_sliding_tab=0x7f0c0059;
+        public static final int screen_home_view_pager=0x7f0c005a;
+        public static final int screen_toolbar=0x7f0c0058;
         public static final int search_badge=0x7f0c0036;
         public static final int search_bar=0x7f0c0035;
         public static final int search_button=0x7f0c0037;
@@ -1627,7 +1631,7 @@ containing a value of this type.
         public static final int submit_area=0x7f0c003d;
         public static final int switch_on_off=0x7f0c0041;
         public static final int tabMode=0x7f0c000b;
-        public static final int textView1=0x7f0c0043;
+        public static final int textView1=0x7f0c004a;
         public static final int title=0x7f0c0028;
         public static final int up=0x7f0c0008;
         public static final int useLogo=0x7f0c0012;
@@ -1669,10 +1673,11 @@ containing a value of this type.
         public static final int fragment_default=0x7f03001a;
         public static final int fragment_shortcur_graphics=0x7f03001b;
         public static final int fragment_shortcut_video=0x7f03001c;
-        public static final int fragment_system_settings=0x7f03001d;
-        public static final int screen_fragment_menu=0x7f03001e;
-        public static final int screen_home=0x7f03001f;
-        public static final int support_simple_spinner_dropdown_item=0x7f030020;
+        public static final int fragment_shortcuts=0x7f03001d;
+        public static final int fragment_system_settings=0x7f03001e;
+        public static final int screen_fragment_menu=0x7f03001f;
+        public static final int screen_home=0x7f030020;
+        public static final int support_simple_spinner_dropdown_item=0x7f030021;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
@@ -1712,6 +1717,7 @@ containing a value of this type.
         public static final int library_FloatingActionButton_licenseId=0x7f05001f;
         public static final int library_FloatingActionButton_repositoryLink=0x7f050020;
         public static final int rcctrlhint=0x7f050021;
+        public static final int toolbar_hint_main=0x7f050022;
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 

@@ -15,16 +15,16 @@
         android:id="@+id/screen_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/material_deep_teal_500"
+        android:background="@color/background_material_light"
         android:minHeight="?attr/actionBarSize"
-        tools:context=".Toolbar" />
+        tools:context=".Toolbar"/>
 
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/screen_home_pager_sliding_tab"
         android:layout_width="match_parent"
         android:layout_height="48dip"
         android:layout_below="@+id/screen_toolbar"
-        android:background="@color/colorPrimary"
+        android:background="@color/background_floating_material_light"
         android:elevation="@dimen/elevation_ten"
         android:fillViewport="false" />
 
@@ -53,4 +53,4 @@
         tools:context=".NavigationDrawer"
         tools:layout="@layout/screen_fragment_menu" />
 </android.support.v4.widget.DrawerLayout>
-<!-- From: file:/C:/Users/Administrator/StudioWorkspace/rcctrl/app/src/main/res/layout/screen_home.xml -->
+<!-- From: file:/C:/Users/yulw/StudioWorkspace/rcctrl/app/src/main/res/layout/screen_home.xml -->

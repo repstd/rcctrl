@@ -58,8 +58,10 @@ public abstract  class BaseActivity extends ActionBarActivity
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         mToolbar=(Toolbar)findViewById(R.id.screen_toolbar);
-        mToolbar.setNavigationIcon(R.drawable.abc_btn_radio_material);
+        mToolbar.setNavigationIcon(R.drawable.ic_ab_drawer);
+        mToolbar.setTitle(getToolbarTitle());
     }
     protected abstract  int     getLayoutID();
     protected abstract  void    loadAddtionalComponents();
+    protected abstract String   getToolbarTitle();
 }

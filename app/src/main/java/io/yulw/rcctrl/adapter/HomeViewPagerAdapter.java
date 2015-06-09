@@ -9,10 +9,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 
 import io.yulw.rcctrl.fragments.DefaultFragment;
+import io.yulw.rcctrl.fragments.SettingsFragment;
+import io.yulw.rcctrl.fragments.ShortcutsFragment;
 
+import android.util.Log;
 public class HomeViewPagerAdapter extends FragmentPagerAdapter
 {
     ArrayList<String> mPagerTitles;
+    private final String TAG="HomeViewPagerAdapter";
     public HomeViewPagerAdapter(FragmentManager fm,ArrayList<String> pagerTitls) {
         super(fm);
         mPagerTitles=pagerTitls;
@@ -20,6 +24,7 @@ public class HomeViewPagerAdapter extends FragmentPagerAdapter
 
     @Override
     public CharSequence getPageTitle(int position) {
+        Log.d(TAG,"::getPageTitle#"+Integer.toString(position));
         if(position>=0&& position<getCount())
             return mPagerTitles.get(position);
         else
@@ -27,19 +32,25 @@ public class HomeViewPagerAdapter extends FragmentPagerAdapter
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(int position)  {
         return super.getItemId(position);
     }
 
     @Override
     public Fragment getItem(int position) {
+        Log.d(TAG,"::getItem#"+Integer.toString(position));
         switch(position)
         {
             case 0:
                 return DefaultFragment.instance();
+            case 1:
+                return SettingsFragment.instance();
+            case 2:
+                return ShortcutsFragment.instance();
             default:
-                return DefaultFragment.instance();
+                break;
         }
+        return null;
     }
     @Override
     public int getCount() {

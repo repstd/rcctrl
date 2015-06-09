@@ -8,11 +8,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.util.Log;
 import io.yulw.rcctrl.R;
 public class DefaultFragment extends  BaseFragment
 {
     private static DefaultFragment mInst=null;
+    private final String TAG="DefaultFragment";
     public static DefaultFragment instance()
     {
         if(mInst==null)
@@ -36,6 +37,6 @@ public class DefaultFragment extends  BaseFragment
     }
 
     protected void initLayout() {
-        setLayoutId(R.layout.fragment_default);
+        setLayoutId(R.layout.activity_main);
     }
 }
