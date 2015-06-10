@@ -9,19 +9,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.util.Log;
+
 import io.yulw.rcctrl.R;
-public class SettingsFragment extends BaseFragment
-{
-    private static SettingsFragment mInst=null;
-    public static SettingsFragment instance()
-    {
-        if(mInst==null)
-            mInst=new SettingsFragment();
-        return mInst;
-    }
+
+public class SettingsFragment extends BaseFragment {
+    private static SettingsFragment mInst = null;
+
     public SettingsFragment() {
         super();
+    }
+
+    public static SettingsFragment instance() {
+        if (mInst == null)
+            mInst = new SettingsFragment();
+        return mInst;
     }
 
     @Override
@@ -31,17 +32,21 @@ public class SettingsFragment extends BaseFragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(getLayoutID(),container,false);
+        return inflater.inflate(getLayoutID(), container, false);
     }
+
     public int getLayoutID() {
         return R.layout.fragment_system_settings;
     }
-    public String getToolbarTitle()  {
-        return "RC CLIENT" ;
+
+    public String getToolbarTitle() {
+        return "RC CLIENT";
     }
+
     public String getName() {
         return "SettingsFragments";
     }
+
     public void loadAddtionalComponents() {
         return;
     }

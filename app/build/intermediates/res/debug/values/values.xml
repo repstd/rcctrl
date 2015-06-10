@@ -5,6 +5,7 @@
     <string-array name="fragment_shortcuts_titles">
         <item name="framgment_shortcuts_title_video">RC Video Playing</item>
         <item name="framgment_shortcuts_title_scenes">RC Scene Rendering</item>
+        <item name="framgment_shortcuts_title_settings">LOGS</item>
     </string-array>
     <string-array name="screen_home_view_fragment_menu_titles">
         <item name="tab_home_view_fragment_menu_default">Default</item>

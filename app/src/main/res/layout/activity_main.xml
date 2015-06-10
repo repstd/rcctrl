@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="io.yulw.rcctrl.MainActivity" >
+    tools:context="io.yulw.rcctrl.MainActivity">
 
     <EditText
         android:id="@+id/editText_progams"
@@ -17,7 +17,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="117dp"
         android:ems="10"
-        android:hint="@string/rcctrlhint" >
+        android:hint="@string/rcctrlhint">
+
         <requestFocus />
     </EditText>
 

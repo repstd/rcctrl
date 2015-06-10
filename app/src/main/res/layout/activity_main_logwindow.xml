@@ -5,6 +5,6 @@
     android:layout_height="match_parent"
     android:lines="@integer/log_text_minLines"
     android:maxLines="@integer/log_text_maxLines"
-    android:minLines="@integer/log_text_minLines" >
+    android:minLines="@integer/log_text_minLines">
 
 </TextView>

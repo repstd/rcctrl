@@ -12,21 +12,23 @@ import java.util.Arrays;
 
 import io.yulw.rcctrl.R;
 import io.yulw.rcctrl.adapter.NavigationFragmentAdapter;
+
 /**
  * Created by yulw on 6/9/2015.
  */
-public class NavigationFragment extends BaseFragment
-{
+public class NavigationFragment extends BaseFragment {
+    private final String TAG = "NavigationFragment";
     ArrayList<String> mFragmentsList;
-    private final String TAG="NavigationFragment";
-    private LayoutInflater mInflater=null;
+    private LayoutInflater mInflater = null;
+
     public NavigationFragment() {
         super();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mInflater=inflater;
-        return inflater.inflate(getLayoutID(),container,false);
+        mInflater = inflater;
+        return inflater.inflate(getLayoutID(), container, false);
     }
 
     @Override
@@ -38,21 +40,22 @@ public class NavigationFragment extends BaseFragment
     public int getLayoutID() {
         return R.layout.screen_home_navigation_fragment_menu;
     }
-    public String getToolbarTitle()  {
-        return "RC CLIENT" ;
+
+    public String getToolbarTitle() {
+        return "RC CLIENT";
     }
+
     public String getName() {
         return "NavigationFragment";
     }
-    public void loadAddtionalComponents()
-    {
+
+    public void loadAddtionalComponents() {
         try {
-            ListView menuList=(ListView)getView().findViewById(R.id.screen_home_fragment_menu_listView);
-            mFragmentsList=new ArrayList<String>(Arrays.asList(menuList.getResources().getStringArray(R.array.screen_home_view_fragment_menu_titles)));
-            menuList.setAdapter(new NavigationFragmentAdapter(mFragmentsList,mInflater));
-        }
-        catch(NullPointerException npe) {
-            Log.d(TAG,"#loadAddtionalComponents#NullPointerException#"+ npe.getMessage());
+            ListView menuList = (ListView) getView().findViewById(R.id.screen_home_fragment_menu_listView);
+            mFragmentsList = new ArrayList<String>(Arrays.asList(menuList.getResources().getStringArray(R.array.screen_home_view_fragment_menu_titles)));
+            menuList.setAdapter(new NavigationFragmentAdapter(mFragmentsList, mInflater));
+        } catch (NullPointerException npe) {
+            Log.d(TAG, "#loadAddtionalComponents#NullPointerException#" + npe.getMessage());
         }
         return;
     }

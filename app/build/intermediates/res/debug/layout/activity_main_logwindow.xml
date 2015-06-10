@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:lines="@integer/log_text_minLines"
     android:maxLines="@integer/log_text_maxLines"
-    android:minLines="@integer/log_text_minLines" >
+    android:minLines="@integer/log_text_minLines">
 
 </TextView>
 <!-- From: file:/C:/Users/yulw/StudioWorkspace/rcctrl/app/src/main/res/layout/activity_main_logwindow.xml -->

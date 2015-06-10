@@ -7,9 +7,9 @@
     tools:context=".DrawerLayout">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/screen_drawer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/screen_drawer">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/screen_toolbar"
@@ -18,7 +18,7 @@
             android:background="@color/background_material_light"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/Base.TextAppearance.AppCompat"
-            tools:context=".Toolbar"/>
+            tools:context=".Toolbar" />
 
         <fragment
             android:id="@+id/screen_home_fragment_container"

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/screen_home_fragment_container_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/screen_home_fragment_container_layout">
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/screen_toolbar"
@@ -13,15 +12,15 @@
         android:background="@color/background_material_light"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Base.TextAppearance.AppCompat"
-        tools:context=".Toolbar"/>
+        tools:context=".Toolbar" />
 
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/screen_home_fragment_container_pager_sliding_tab"
         android:layout_width="match_parent"
         android:layout_height="48dip"
+        android:layout_below="@+id/screen_toolbar"
         android:background="@color/background_floating_material_light"
         android:elevation="@dimen/elevation_ten"
-        android:layout_below="@+id/screen_toolbar"
         android:fillViewport="false" />
 
     <android.support.v4.view.ViewPager
@@ -36,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/screen_home_fragment_container_pager_sliding_tab"
-        tools:context=".FrameLayout"/>
+        tools:context=".FrameLayout" />
 
 
 </RelativeLayout>

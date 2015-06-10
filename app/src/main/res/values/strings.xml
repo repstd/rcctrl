@@ -8,7 +8,7 @@
     <string name="action_log">OpenLogs</string>
     <string name="alert_dialog_ok">Ok</string>
     <string name="fragment_general_setting_description">Setting the Master IP and Port.</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="screen_home_view_pager_tabs_titles">
         <item name="tab_home_view_view_pager_default">Default</item>
@@ -24,6 +24,7 @@
     <string-array name="fragment_shortcuts_titles">
         <item name="framgment_shortcuts_title_video">RC Video Playing</item>
         <item name="framgment_shortcuts_title_scenes">RC Scene Rendering</item>
+        <item name="framgment_shortcuts_title_settings">LOGS</item>
     </string-array>
     <string name="toolbar_hint_main">RC Client</string>>
 </resources>

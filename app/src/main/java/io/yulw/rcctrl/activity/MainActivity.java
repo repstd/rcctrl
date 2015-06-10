@@ -187,7 +187,7 @@ public class MainActivity extends Activity {
         Log.d(TAG, "eocodeMsg.current: " + m_cmd_name + " " + m_cmd_op);
         m_cmd_name = this.m_editTextCmd.getText().toString();
         /*
-		 * @yulw,message to be sent to the rchost.eg. rcrender_on
+         * @yulw,message to be sent to the rchost.eg. rcrender_on
 		 */
         String msg;
         if (m_mapRunningApps.get(m_cmd_name) == null && m_cmd_op == "on") {

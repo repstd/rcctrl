@@ -3,17 +3,18 @@
     android:id="@+id/fragment_default_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.yulw.rcctrl.activity.HomeActivity" >
+    tools:context="io.yulw.rcctrl.activity.HomeActivity">
 
     <EditText
         android:id="@+id/fragment_default_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/rcctrlhint"
         android:layout_above="@+id/fragment_default_switch_on_off"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46dp">
+        android:layout_marginBottom="46dp"
+        android:ems="10"
+        android:hint="@string/rcctrlhint">
+
         <requestFocus />
     </EditText>
 
@@ -23,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/fragment_default_editText"
         android:layout_alignRight="@+id/fragment_default_editText"
-        android:text="Operation:"
-        android:checked="false"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:checked="false"
+        android:text="Operation:" />
 
     <Button
         android:id="@+id/fragment_default_button_send"

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RalativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_shorcut_video_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</RalativeLayout>
+    <ImageView
+        android:id="@+id/fragment_shortcut_logs_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background" />
+
+</LinearLayout>
 <!-- From: file:/C:/Users/yulw/StudioWorkspace/rcctrl/app/src/main/res/layout/fragment_shortcut_video.xml -->

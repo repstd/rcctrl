@@ -22,7 +22,7 @@ android {
 
     defaultConfig {
         applicationId "io.yulw.rcctrl"
-        minSdkVersion   14
+        minSdkVersion 14
         targetSdkVersion 14
         versionCode 1
         versionName "1.0"

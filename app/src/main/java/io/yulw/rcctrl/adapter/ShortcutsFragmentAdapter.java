@@ -2,37 +2,35 @@ package io.yulw.rcctrl.adapter;
 
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
 
-import io.yulw.rcctrl.fragments.DefaultFragment;
-import io.yulw.rcctrl.fragments.DetailedFragment;
-import io.yulw.rcctrl.fragments.ShortcutsFragment;
-import android.content.Context;
 import io.yulw.rcctrl.R;
-import android.util.Log;
+import io.yulw.rcctrl.fragments.DetailedFragment;
+
 /**
  * Created by yulw on 2015/6/9.
  */
-public class ShortcutsFragmentAdapter extends  BaseAdapter
-{
+public class ShortcutsFragmentAdapter extends BaseAdapter {
+    private final String TAG = "ShortcutsAdapter";
     ArrayList<String> mShortcutsNames;
-    private final String TAG="ShortcutsAdapter";
-    private LayoutInflater mInflater=null;
+    private LayoutInflater mInflater = null;
+
     public ShortcutsFragmentAdapter(ArrayList<String> shortcutsNames) {
         super();
-        mShortcutsNames=shortcutsNames;
-        Log.d(TAG,"::Construct.");
+        mShortcutsNames = shortcutsNames;
+        Log.d(TAG, "::Construct.");
     }
+
     public void setInflater(LayoutInflater flater) {
-        mInflater=flater;
+        mInflater = flater;
     }
+
     @Override
     public boolean areAllItemsEnabled() {
         return false;
@@ -59,13 +57,11 @@ public class ShortcutsFragmentAdapter extends  BaseAdapter
     }
 
     @Override
-    public Object getItem(int position)
-    {
-        Log.d(TAG,"::getItem");
-        DetailedFragment frag=new DetailedFragment();
-        Bundle args=new Bundle();
-        switch (position)
-        {
+    public Object getItem(int position) {
+        Log.d(TAG, "::getItem");
+        DetailedFragment frag = new DetailedFragment();
+        Bundle args = new Bundle();
+        switch (position) {
             case 0:
                 args.putInt("LayoutId", R.layout.fragment_shortcur_graphics);
                 frag.setArguments(args);
@@ -93,20 +89,17 @@ public class ShortcutsFragmentAdapter extends  BaseAdapter
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.d(TAG, "::getView#" + Integer.toString(position));
-        try
-        {
-            switch (position)
-            {
+        try {
+            switch (position) {
                 case 0:
-                    return mInflater.inflate(R.layout.fragment_system_settings,parent,false);
+                    return mInflater.inflate(R.layout.fragment_system_settings, parent, false);
                 case 1:
-                    return mInflater.inflate(R.layout.fragment_system_settings,parent,false);
+                    return mInflater.inflate(R.layout.fragment_system_settings, parent, false);
                 default:
                     break;
             }
-        }
-        catch (Exception e) {
-            Log.d(TAG,"::getView#Error#"+e.getMessage()) ;
+        } catch (Exception e) {
+            Log.d(TAG, "::getView#Error#" + e.getMessage());
         }
         return null;
     }
@@ -118,7 +111,7 @@ public class ShortcutsFragmentAdapter extends  BaseAdapter
 
     @Override
     public int getViewTypeCount() {
-        Log.d(TAG,"::getViewTypeCount");
+        Log.d(TAG, "::getViewTypeCount");
         return 1;
     }
 

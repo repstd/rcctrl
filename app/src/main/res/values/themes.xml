@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2014 Antonio Leiva Gordillo.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +15,8 @@
   -->
 
 <resources>
-    <style name="AppTheme" parent="AppTheme.Base"/>
+
+    <style name="AppTheme" parent="AppTheme.Base" />
 
     <style name="AppTheme.Base" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/colorPrimary</item>
