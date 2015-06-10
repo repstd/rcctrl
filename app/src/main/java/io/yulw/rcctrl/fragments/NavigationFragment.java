@@ -21,6 +21,6 @@ public class NavigationFragment extends BaseFragment
     }
     @Override
     protected void initLayout() {
-        setLayoutId(R.layout.screen_fragment_menu);
+        setLayoutId(R.layout.screen_home_navigation_fragment_menu);
     }
 }

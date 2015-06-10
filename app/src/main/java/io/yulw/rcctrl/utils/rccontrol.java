@@ -98,5 +98,9 @@ public class rccontrol
 			Log.d(TAG,"Error in Closing The Socket.Error: "+e.getMessage());
 		}	
     }
+	private void addWifiManagerStatedChanged()
+	{
+
+	}
 
 }

@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-
 import io.yulw.rcctrl.R;
 
 public abstract  class BaseActivity extends ActionBarActivity
@@ -60,6 +59,7 @@ public abstract  class BaseActivity extends ActionBarActivity
         mToolbar=(Toolbar)findViewById(R.id.screen_toolbar);
         mToolbar.setNavigationIcon(R.drawable.ic_ab_drawer);
         mToolbar.setTitle(getToolbarTitle());
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));
     }
     protected abstract  int     getLayoutID();
     protected abstract  void    loadAddtionalComponents();

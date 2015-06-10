@@ -1,0 +1,36 @@
+Applications Memory Usage (kB):
+Uptime: 158161940 Realtime: 233449506
+
+** MEMINFO in pid 23532 [io.yulw.rcctrl] **
+                         Shared  Private     Heap     Heap     Heap
+                   Pss    Dirty    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------
+       Native     2844     1080     2792     7228     7217       10
+       Dalvik     6003    11940     5460    14659    13597     1062
+       Cursor        0        0        0                           
+       Ashmem        2        4        0                           
+    Other dev      904       40      900                           
+     .so mmap     2345     2012     1472                           
+    .jar mmap        0        0        0                           
+    .apk mmap       91        0        0                           
+    .ttf mmap       15        0        0                           
+    .dex mmap     1336        0       16                           
+   Other mmap      633        8       36                           
+      Unknown      624     1128      572                           
+        TOTAL    14797    16212    11248    21887    20814     1072
+ 
+ Objects
+               Views:      122         ViewRootImpl:       22
+         AppContexts:        4           Activities:        2
+              Assets:        2        AssetManagers:        2
+       Local Binders:       18        Proxy Binders:       18
+    Death Recipients:        1
+     OpenSSL Sockets:        0
+ 
+ SQL
+                heap:        0          MEMORY_USED:        0
+  PAGECACHE_OVERFLOW:        0          MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/framework/framework-res.apk:/resources.arsc: 878K

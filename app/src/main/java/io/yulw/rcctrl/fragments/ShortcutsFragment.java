@@ -5,6 +5,8 @@ package io.yulw.rcctrl.fragments;
  */
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.LayoutInflater;

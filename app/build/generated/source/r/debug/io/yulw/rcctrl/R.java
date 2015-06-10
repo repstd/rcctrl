@@ -1550,13 +1550,13 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0c0020;
         public static final int action_bar_title=0x7f0c001f;
         public static final int action_context_bar=0x7f0c0033;
-        public static final int action_log=0x7f0c005e;
+        public static final int action_log=0x7f0c0062;
         public static final int action_menu_divider=0x7f0c0002;
         public static final int action_menu_presenter=0x7f0c0003;
         public static final int action_mode_bar=0x7f0c002f;
         public static final int action_mode_bar_stub=0x7f0c002e;
         public static final int action_mode_close_button=0x7f0c0021;
-        public static final int action_settings=0x7f0c005d;
+        public static final int action_settings=0x7f0c0061;
         public static final int activity_chooser_view_content=0x7f0c0022;
         public static final int always=0x7f0c0017;
         public static final int beginning=0x7f0c0014;
@@ -1577,7 +1577,6 @@ containing a value of this type.
         public static final int fragment_default_editText=0x7f0c0047;
         public static final int fragment_default_layout=0x7f0c0046;
         public static final int fragment_default_switch_on_off=0x7f0c0048;
-        public static final int fragment_menu_listView=0x7f0c0055;
         public static final int fragment_shorcut_video_layout=0x7f0c004c;
         public static final int fragment_shorrcuts_layout=0x7f0c004d;
         public static final int fragment_shortcut_graphics_layout=0x7f0c004b;
@@ -1606,13 +1605,18 @@ containing a value of this type.
         public static final int progress_circular=0x7f0c0005;
         public static final int progress_horizontal=0x7f0c0006;
         public static final int radio=0x7f0c002c;
-        public static final int screen_default_navigation_drawer=0x7f0c005c;
-        public static final int screen_drawer=0x7f0c0057;
-        public static final int screen_fragment_container=0x7f0c005b;
-        public static final int screen_home_layout=0x7f0c0056;
-        public static final int screen_home_pager_sliding_tab=0x7f0c0059;
-        public static final int screen_home_view_pager=0x7f0c005a;
-        public static final int screen_toolbar=0x7f0c0058;
+        public static final int screen_default_navigation_drawer=0x7f0c005b;
+        public static final int screen_drawer=0x7f0c0056;
+        public static final int screen_fragment_container=0x7f0c005a;
+        public static final int screen_home_fragment_container=0x7f0c005c;
+        public static final int screen_home_fragment_container_fragment_container=0x7f0c005f;
+        public static final int screen_home_fragment_container_pager_sliding_tab=0x7f0c005d;
+        public static final int screen_home_fragment_container_view_pager=0x7f0c005e;
+        public static final int screen_home_fragment_menu_listView=0x7f0c0060;
+        public static final int screen_home_layout=0x7f0c0055;
+        public static final int screen_home_pager_sliding_tab=0x7f0c0058;
+        public static final int screen_home_view_pager=0x7f0c0059;
+        public static final int screen_toolbar=0x7f0c0057;
         public static final int search_badge=0x7f0c0036;
         public static final int search_bar=0x7f0c0035;
         public static final int search_button=0x7f0c0037;
@@ -1675,9 +1679,10 @@ containing a value of this type.
         public static final int fragment_shortcut_video=0x7f03001c;
         public static final int fragment_shortcuts=0x7f03001d;
         public static final int fragment_system_settings=0x7f03001e;
-        public static final int screen_fragment_menu=0x7f03001f;
-        public static final int screen_home=0x7f030020;
-        public static final int support_simple_spinner_dropdown_item=0x7f030021;
+        public static final int screen_home=0x7f03001f;
+        public static final int screen_home_fragment_container=0x7f030020;
+        public static final int screen_home_navigation_fragment_menu=0x7f030021;
+        public static final int support_simple_spinner_dropdown_item=0x7f030022;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
