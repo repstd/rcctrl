@@ -14,10 +14,10 @@ import io.yulw.rcctrl.fragments.ShortcutsFragment;
 
 import android.util.Log;
 public class HomeViewPagerAdapter extends FragmentPagerAdapter
-{
-    ArrayList<String> mPagerTitles;
-    private final String TAG="HomeViewPagerAdapter";
-    public HomeViewPagerAdapter(FragmentManager fm,ArrayList<String> pagerTitls) {
+    {
+        ArrayList<String> mPagerTitles;
+        private final String TAG="HomeViewPagerAdapter";
+        public HomeViewPagerAdapter(FragmentManager fm,ArrayList<String> pagerTitls) {
         super(fm);
         mPagerTitles=pagerTitls;
     }

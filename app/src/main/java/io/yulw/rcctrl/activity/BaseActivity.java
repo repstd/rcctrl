@@ -3,23 +3,27 @@ package io.yulw.rcctrl.activity;
 /**
  * Created by yulw on 2015/6/8.
  */
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+
 import io.yulw.rcctrl.R;
 import io.yulw.rcctrl.utils.rcframe;
-public abstract  class BaseActivity extends ActionBarActivity implements rcframe
-{
+
+public abstract class BaseActivity extends ActionBarActivity implements rcframe {
     private Toolbar mToolbar;
-    @Override protected void onCreate(Bundle savedInstanceState) {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
         loadToolbr();
         loadAddtionalComponents();
     }
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -50,13 +54,12 @@ public abstract  class BaseActivity extends ActionBarActivity implements rcframe
         super.onPause();
     }
 
-    protected void loadToolbr()
-    {
+    protected void loadToolbr() {
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        mToolbar=(Toolbar)findViewById(R.id.screen_toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.screen_toolbar);
         mToolbar.setNavigationIcon(R.drawable.ic_ab_drawer);
         mToolbar.setTitle(getToolbarTitle());
         mToolbar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));

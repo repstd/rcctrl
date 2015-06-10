@@ -29,8 +29,9 @@ public class rccontrol
     }
     public synchronized boolean sendPacket(String msg)
     {
-    	if(msg=="")
-    		return false;
+		Log.d(TAG,"Trying to send# "+msg);
+		if(msg.equals(""))
+			return false;
     	try {
     		DatagramPacket packet=new DatagramPacket(msg.getBytes(),msg.length(),getPara().getHost(),getPara().getPort());
     		Log.d(TAG,"Sending data."+getPara().getHost().toString()+":"+getPara().getPort()+" Size: "+msg.length()+1);
@@ -62,8 +63,8 @@ public class rccontrol
 			Log.d(TAG,"Error in Getting Message.Error: "+e.getMessage());
 			return "Error";
 		}
-        return "Test";
-    	//return new String(packet.getData(),0,packet.getLength());
+        //return "Test";
+    	return new String(packet.getData(),0,packet.getLength());
     }
     public void reset(rcpara para)
     {
@@ -74,6 +75,7 @@ public class rccontrol
     }
     public synchronized void open()
     {
+		Log.d(TAG,"open");
     	try {
 			//m_socket=new DatagramSocket(getPara().getPort(),getPara().getHost());
 			m_socket=new DatagramSocket(getPara().getPort());
@@ -90,17 +92,13 @@ public class rccontrol
     	return m_socket.isClosed();
     }
     public synchronized void close(){
+		Log.d(TAG,"close");
     	try {
-			if (!m_socket.isClosed())
+			if (m_socket!=null&&!m_socket.isClosed())
 				m_socket.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.d(TAG,"Error in Closing The Socket.Error: "+e.getMessage());
 		}	
     }
-	private void addWifiManagerStatedChanged()
-	{
-
-	}
-
 }

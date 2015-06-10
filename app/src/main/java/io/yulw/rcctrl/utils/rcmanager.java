@@ -3,11 +3,9 @@ package io.yulw.rcctrl.utils;
 /**
  * Created by yulw on 2015/6/10.
  */
-import android.os.Handler;
-import android.os.Bundle;
+
 import android.net.wifi.WifiManager;
-import android.content.IntentFilter;
-import android.content.BroadcastReceiver;
+import android.os.Handler;
 public class rcmanager
 {
     private static rcmanager mInst=null;
@@ -25,7 +23,8 @@ public class rcmanager
     rcmanager()  {
         //@yulw,default paremeters
         mLastPort=20714;
-        mLastHostName="10.108.61.29";
+        //mLastHostName="10.108.61.29";
+        mLastHostName = "10.108.59.160";
         mWifi=null;
         mCurPara=null;
     }

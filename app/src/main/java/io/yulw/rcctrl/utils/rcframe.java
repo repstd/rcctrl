@@ -5,11 +5,11 @@ package io.yulw.rcctrl.utils;
  */
 public interface rcframe
 {
-    abstract  int getLayoutID();
+    int getLayoutID();
 
-    abstract String getToolbarTitle();
+    String getToolbarTitle();
 
-    abstract String getName();
+    String getName();
 
-    abstract  void loadAddtionalComponents();
+    void loadAddtionalComponents();
 }
