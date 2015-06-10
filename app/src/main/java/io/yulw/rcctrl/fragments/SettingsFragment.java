@@ -22,8 +22,6 @@ public class SettingsFragment extends BaseFragment
     }
     public SettingsFragment() {
         super();
-        setName("SettingFragment");
-        initLayout();
     }
 
     @Override
@@ -35,8 +33,16 @@ public class SettingsFragment extends BaseFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(getLayoutID(),container,false);
     }
-    @Override
-    protected void initLayout() {
-        setLayoutId(R.layout.fragment_system_settings);
+    public int getLayoutID() {
+        return R.layout.fragment_system_settings;
+    }
+    public String getToolbarTitle()  {
+        return "RC CLIENT" ;
+    }
+    public String getName() {
+        return "SettingsFragments";
+    }
+    public void loadAddtionalComponents() {
+        return;
     }
 }

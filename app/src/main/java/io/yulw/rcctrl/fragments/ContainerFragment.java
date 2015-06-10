@@ -1,7 +1,9 @@
 package io.yulw.rcctrl.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,31 +26,40 @@ public class ContainerFragment extends BaseFragment
 {
     private final String TAG="ContainerFragment";
     private static ContainerFragment mInst=null;
-    private ArrayList<String> mViewPagerTabsTitles;
-    private ArrayList<String> mFragmentMenuTitles;
-    private PagerSlidingTabStrip mPagerTabStrip;
-    private ViewPager mViewPager;
+    private ArrayList<String> mViewPagerTabsTitles=null;
+    private ArrayList<String> mFragmentMenuTitles=null;
+    private PagerSlidingTabStrip mPagerTabStrip=null;
+    private ViewPager mViewPager=null;
+    private Toolbar mToolbar;
     public static ContainerFragment instance() {
         if(mInst==null)
             mInst=new ContainerFragment();
         return mInst;
     }
     public ContainerFragment() {
-    }
-    @Override
-    protected void initLayout()  {
-        setLayoutId(R.layout.screen_home_fragment_container);
+        super();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)  {
-        return inflater.inflate(getLayoutID(),container,false);
+        return inflater.inflate(getLayoutID(),container,true);
     }
-    protected void loadAddtionalComponents()
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loadAddtionalComponents();
+    }
+
+    public void loadAddtionalComponents()
     {
-        mViewPagerTabsTitles = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.screen_home_view_pager_tabs_titles)));
-        mFragmentMenuTitles = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.screen_home_view_fragment_menu_titles)));
-        mViewPager = (ViewPager) getView().findViewById(R.id.screen_home_view_pager);
-        mPagerTabStrip=(PagerSlidingTabStrip)getView().findViewById(R.id.screen_home_pager_sliding_tab);
+        mViewPagerTabsTitles = new ArrayList<String>(Arrays.asList(getActivity().getResources().getStringArray(R.array.screen_home_view_pager_tabs_titles)));
+        mFragmentMenuTitles = new ArrayList<String>(Arrays.asList(getActivity().getResources().getStringArray(R.array.screen_home_view_fragment_menu_titles)));
+        mViewPager = (ViewPager) getView().findViewById(R.id.screen_home_fragment_container_view_pager);
+        mPagerTabStrip=(PagerSlidingTabStrip)getView().findViewById(R.id.screen_home_fragment_container_pager_sliding_tab);
+        mToolbar=(Toolbar)getView().findViewById(R.id.screen_toolbar);
+        mToolbar.setTitle(getToolbarTitle());
+        mToolbar.setNavigationIcon(R.drawable.ic_ab_drawer);
+        mToolbar.setTitleTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
         Log.d(TAG, "Fragments Titles Loaded.");
         for(String s: mViewPagerTabsTitles)
             Log.d(TAG,"tab# "+s);
@@ -68,7 +79,16 @@ public class ContainerFragment extends BaseFragment
         mPagerTabStrip.setViewPager(mViewPager);
         rcutil.showMessageAsToast(getActivity().getApplicationContext(), "AdditionalComponentesLoaded.");
     }
-    protected String getToolbarTitle() {
+
+    public String getToolbarTitle() {
         return "RC CLIENT";
+    }
+    public int getLayoutID()
+    {
+        return R.layout.screen_home_fragment_container;
+    }
+    public String getName()
+    {
+        return "ContainerFragment";
     }
 }

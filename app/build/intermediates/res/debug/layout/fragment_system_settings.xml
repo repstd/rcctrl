@@ -6,8 +6,7 @@
     android:background="@color/colorPrimary"
     android:id="@+id/fragment_system_setting_layout">
 
-    <ImageView
-        android:id="@+id/fragment_system_setting_imageView"
+    <ImageView android:id="@+id/fragment_system_setting_imageView"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:scaleType="centerCrop"

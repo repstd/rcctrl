@@ -28,10 +28,6 @@ import io.yulw.rcctrl.utils.rcutil;
  */
 public class HomeActivity extends BaseActivity
 {
-    private ArrayList<String> mViewPagerTabsTitles;
-    private ArrayList<String> mFragmentMenuTitles;
-    private PagerSlidingTabStrip mPagerTabStrip;
-    private ViewPager mViewPager;
     IntentFilter mIntentFilter;
     BroadcastReceiver mBroadReceiver;
     private final String TAG="HomeActivity";
@@ -67,42 +63,26 @@ public class HomeActivity extends BaseActivity
     }
 
     @Override
-    public void startActivityFromFragment(Fragment fragment, Intent intent, int requestCode) {
+    public void startActivityFromFragment(Fragment fragment, Intent intent, int requestCode)  {
         super.startActivityFromFragment(fragment, intent, requestCode);
     }
-    protected  int getLayoutID() {
+    @Override
+    public int getLayoutID() {
        return R.layout.screen_home;
     }
-
     @Override
-    protected void loadAddtionalComponents()
+    public String getName()
     {
-        mViewPagerTabsTitles = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.screen_home_view_pager_tabs_titles)));
-        mFragmentMenuTitles = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.screen_home_view_fragment_menu_titles)));
-        mViewPager = (ViewPager) findViewById(R.id.screen_home_view_pager);
-        mPagerTabStrip=(PagerSlidingTabStrip)findViewById(R.id.screen_home_pager_sliding_tab);
-        Log.d(TAG,"Fragments Titles Loaded.");
-        for(String s: mViewPagerTabsTitles)
-            Log.d(TAG,"tab# "+s);
-        for(String s: mFragmentMenuTitles)
-            Log.d(TAG,"frag# "+s);
-        try {
-            HomeViewPagerAdapter adpt=new HomeViewPagerAdapter(getSupportFragmentManager(),mViewPagerTabsTitles);
-            mViewPager.setAdapter(adpt);
-        }
-        catch (NullPointerException npe){
-            Log.d(TAG,"NULL Point Exception."+npe.getMessage());
-        }
-        catch(Exception e) {
-            Log.d(TAG,e.toString());
-        }
-        //mPagerTabStrip.setEnabled(true);
-        mPagerTabStrip.setViewPager(mViewPager);
+        return "HomeActivity";
+    }
+    @Override
+    public void loadAddtionalComponents() {
         rcutil.showMessageAsToast(getApplicationContext(), "AdditionalComponentesLoaded.");
     }
-    protected String getToolbarTitle() {
+    public String getToolbarTitle() {
         return "RC CLIENT";
     }
+
     void removeWifiStateFilter() {
         unregisterReceiver(mBroadReceiver);
     }
@@ -130,13 +110,13 @@ public class HomeActivity extends BaseActivity
                             else {
                                 rcutil.showMessageAsToast(getApplicationContext(),"WifiDisconnected.");
                             }
-                        }
-                    }
-                    catch(IllegalStateException ile) {
-                        String msg=new String("::addWifiStateChangedFilter::receiver::OnReceive.IllegalStateException: "+ile.getMessage());
-                        Log.d(TAG,msg);
-                        rcutil.showMessageAsToast(getApplicationContext(),msg);
-                    }
+                }
+            }
+            catch(IllegalStateException ile) {
+                String msg=new String("::addWifiStateChangedFilter::receiver::OnReceive.IllegalStateException: "+ile.getMessage());
+                Log.d(TAG,msg);
+                rcutil.showMessageAsToast(getApplicationContext(),msg);
+            }
                     catch(Exception e) {
                         String msg=new String("::addWifiStateChangedFilter::receiver::OnReceive.Exception:"+e.getMessage());
                         Log.d(TAG,msg);

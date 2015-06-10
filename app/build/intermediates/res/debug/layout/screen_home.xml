@@ -11,37 +11,23 @@
         android:layout_height="match_parent"
         android:id="@+id/screen_drawer">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/screen_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background_material_light"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/Base.TextAppearance.AppCompat"
-        tools:context=".Toolbar"/>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/screen_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_material_light"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/Base.TextAppearance.AppCompat"
+            tools:context=".Toolbar"/>
 
-    <com.astuetz.PagerSlidingTabStrip
-        android:id="@+id/screen_home_pager_sliding_tab"
-        android:layout_width="match_parent"
-        android:layout_height="48dip"
-        android:layout_below="@+id/screen_toolbar"
-        android:background="@color/background_floating_material_light"
-        android:elevation="@dimen/elevation_ten"
-        android:fillViewport="false" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/screen_home_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/screen_home_pager_sliding_tab"
-        android:background="@android:color/white" />
-
-    <FrameLayout
-        android:id="@+id/screen_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/screen_home_pager_sliding_tab"
-        tools:context=".FrameLayout"/>
+        <fragment
+            android:id="@+id/screen_home_fragment_container"
+            android:name="io.yulw.rcctrl.fragments.ContainerFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            tools:context=".NavigationDrawer"
+            tools:layout="@layout/screen_home_fragment_container" />
 
     </RelativeLayout>
 
@@ -52,6 +38,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         tools:context=".NavigationDrawer"
-        tools:layout="@layout/screen_fragment_menu" />
+        tools:layout="@layout/screen_home_navigation_fragment_menu" />
 </android.support.v4.widget.DrawerLayout>
 <!-- From: file:/C:/Users/yulw/StudioWorkspace/rcctrl/app/src/main/res/layout/screen_home.xml -->

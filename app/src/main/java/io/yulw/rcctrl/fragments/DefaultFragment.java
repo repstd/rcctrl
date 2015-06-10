@@ -22,8 +22,6 @@ public class DefaultFragment extends  BaseFragment
     }
     public DefaultFragment() {
         super();
-        setName("DefaultFragment");
-        initLayout();
     }
 
     @Override
@@ -35,8 +33,18 @@ public class DefaultFragment extends  BaseFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(getLayoutID(),container,false);
     }
-
-    protected void initLayout() {
-        setLayoutId(R.layout.activity_main);
+    public int getLayoutID() {
+        return R.layout.activity_main;
     }
+
+    public String getToolbarTitle()  {
+        return "RC CLIENT" ;
+    }
+    public String getName() {
+        return "DefaultFragment";
+    }
+
+   public void loadAddtionalComponents() {
+        return;
+   }
 }

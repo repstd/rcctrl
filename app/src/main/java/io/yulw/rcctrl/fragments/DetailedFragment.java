@@ -16,24 +16,24 @@ public class DetailedFragment extends BaseFragment
     private String TAG="DetailedFragment";
     public DetailedFragment() {
         super();
-        initLayout();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(getLayoutID(),container,false);
     }
-    @Override
-    protected void initLayout()  {
-        Bundle args=getArguments();
-        try {
-            mLayoutId=args.getInt("LayoutId");
-            Log.d(TAG,"::inntLayout#"+Integer.toString(mLayoutId));
-            //TODO:
-            //Add a adapter implementaion, so specific interaction couled be added to this fragment
-        }
-        catch(Exception e) {
-            Log.d(TAG,"::inntLayout#"+e.getMessage());
-        }
-        setLayoutId(mLayoutId);
+
+    public int getLayoutID() {
+        return R.layout.fragment_system_settings;
     }
+
+    public String getToolbarTitle()  {
+        return "RC CLIENT" ;
+    }
+    public String getName() {
+        return "DetailedFragments";
+    }
+    public void loadAddtionalComponents() {
+        return;
+    }
+
 }

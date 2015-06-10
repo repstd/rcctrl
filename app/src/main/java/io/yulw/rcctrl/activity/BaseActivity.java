@@ -10,8 +10,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import io.yulw.rcctrl.R;
-
-public abstract  class BaseActivity extends ActionBarActivity
+import io.yulw.rcctrl.utils.rcframe;
+public abstract  class BaseActivity extends ActionBarActivity implements rcframe
 {
     private Toolbar mToolbar;
     @Override protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,4 @@ public abstract  class BaseActivity extends ActionBarActivity
         mToolbar.setTitle(getToolbarTitle());
         mToolbar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));
     }
-    protected abstract  int     getLayoutID();
-    protected abstract  void    loadAddtionalComponents();
-    protected abstract String   getToolbarTitle();
 }

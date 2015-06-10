@@ -36,15 +36,7 @@ public class ShortcutsFragment extends BaseFragment {
 
     public ShortcutsFragment() {
         super();
-        setName("ShortcutsFragment");
-        initLayout();
     }
-
-    @Override
-    protected void initLayout() {
-        setLayoutId(R.layout.fragment_shortcuts);
-    }
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -69,5 +61,18 @@ public class ShortcutsFragment extends BaseFragment {
         catch (NullPointerException e)  {
             Log.d(TAG,"::initLayout#"+e.getMessage());
         }
+    }
+    public int getLayoutID() {
+        return R.layout.fragment_shortcuts;
+    }
+
+    public String getToolbarTitle()  {
+        return "RC CLIENT" ;
+    }
+    public String getName() {
+        return "ShortcutsFragments";
+    }
+    public void loadAddtionalComponents() {
+        return;
     }
 }
