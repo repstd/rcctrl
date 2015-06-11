@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class ShortcutsFragment extends BaseFragment {
     private final String TAG = "ShortcutFragment";
     ArrayList<String> mShortcutsTitle;
     private ListView mShortcutsListView;
-    private View mDrawer;
+    private ExpandableListView mShortcutExpandMenuView;
 
     public ShortcutsFragment() {
         super();
@@ -42,22 +43,14 @@ public class ShortcutsFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mDrawer = inflater.inflate(getLayoutID(), container, false);
-        return mDrawer;
+        return inflater.inflate(getLayoutID(), container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        try {
-            mShortcutsListView = (ListView) view.findViewById(R.id.fragment_shortcut_listView);
-            mShortcutsTitle = new ArrayList<String>(Arrays.asList(view.getResources().getStringArray(R.array.fragment_shortcuts_titles)));
-            ShortcutsFragmentAdapter adapter = new ShortcutsFragmentAdapter(mShortcutsTitle);
-            adapter.setInflater(getLayoutInflater(savedInstanceState));
-            mShortcutsListView.setAdapter(adapter);
-        } catch (NullPointerException e) {
-            Log.d(TAG, "::initLayout#" + e.getMessage());
-        }
+        Log.d(TAG, "::onViewCreated");
+        loadAddtionalComponents();
     }
 
     public int getLayoutID() {
@@ -73,6 +66,37 @@ public class ShortcutsFragment extends BaseFragment {
     }
 
     public void loadAddtionalComponents() {
-        return;
+        try {
+            loadUIComponents();
+            addAdaptersOrListeners();
+        } catch (NullPointerException e) {
+            Log.d(TAG, "::initLayout#" + e.getMessage());
+        }
+    }
+
+    private void loadUIComponents() throws NullPointerException {
+        mShortcutsListView = (ListView) getView().findViewById(R.id.fragment_shortcut_listView);
+    }
+
+    private void addAdaptersOrListeners() throws NullPointerException {
+        mShortcutsTitle = new ArrayList<String>(Arrays.asList(getView().getResources().getStringArray(R.array.fragment_shortcuts_titles)));
+        ShortcutsFragmentAdapter adapter = new ShortcutsFragmentAdapter(mShortcutsTitle);
+        adapter.setInflater(getActivity().getLayoutInflater());
+        mShortcutsListView.offsetTopAndBottom(5);
+        mShortcutsListView.setAdapter(adapter);
+
+//        DetailedFragment previewFrag = (DetailedFragment) mShortcutsListView.getAdapter().getItem(1);
+//        if(previewFrag==null) {
+//            Log.d(TAG, "Can't find DetailedFrag#PreviewListView.");
+//            return;
+//        }
+//        mShortcutExpandMenuView = (ExpandableListView) previewFrag.getView().findViewById(R.id.fragment_shortcut_expand_menu_view);
+//        if (mShortcutExpandMenuView == null)
+//            Log.d(TAG, "ExpandListViewNotFound.");
+//        else {
+//            Log.d(TAG, "ExpandListViewFound.");
+//            //mShortcutExpandMenuView.setBackground((Drawable) getActivity().getResources().getDrawable(R.drawable.background));
+//            mShortcutExpandMenuView.setAdapter(new ShortcutsFragmentsExpandableViewAdapter(getActivity().getLayoutInflater()));
+//        }
     }
 }

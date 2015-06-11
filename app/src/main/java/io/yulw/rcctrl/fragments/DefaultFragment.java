@@ -20,7 +20,8 @@ import java.util.HashMap;
 import io.yulw.rcctrl.R;
 import io.yulw.rcctrl.utils.rccontrol;
 import io.yulw.rcctrl.utils.rcutil;
-
+import io.yulw.rcctrl.utils.rctasks;
+import io.yulw.rcctrl.utils.rcworker;
 public class DefaultFragment extends BaseFragment {
     private static DefaultFragment mInst = null;
     private final String TAG = "DefaultFragment";
@@ -98,7 +99,7 @@ public class DefaultFragment extends BaseFragment {
         mButtonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new worker(rccontrol.instance(), encodeMsg()).start();
+                new rcworker<backgroundMessagerTask>(new backgroundMessagerTask(encodeMsg())).start();
             }
         });
 
@@ -125,17 +126,16 @@ public class DefaultFragment extends BaseFragment {
         return msg;
     }
 }
-
-class worker extends Thread {
-    private rccontrol m_c;
-    private String m_msg;
-
-    public worker(rccontrol ctrl, String msg) {
-        m_c = ctrl;
-        m_msg = msg;
+class backgroundMessagerTask implements rctasks
+{
+    private  String mMsg;
+    public backgroundMessagerTask(String msg) {
+        mMsg=msg;
     }
-
-    public void run() {
-        m_c.sendPacket(m_msg);
+    public void execute() {
+        rccontrol.instance().sendPacket(mMsg);
     }
-};
+    public Object getTask() {
+        return mMsg;
+    }
+}

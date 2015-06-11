@@ -6,17 +6,27 @@ package io.yulw.rcctrl.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import io.yulw.rcctrl.R;
+import io.yulw.rcctrl.utils.rcmanager;
 
 public class SettingsFragment extends BaseFragment {
+    private final String TAG="SettingsFragment";
+    private EditText    mEditTextAddr;
+    private EditText    mEditTextPort;
+    private Button      mButtonFinish;
     private static SettingsFragment mInst = null;
-
     public SettingsFragment() {
         super();
+        mEditTextAddr=null;
+        mEditTextPort=null;
+        mButtonFinish=null;
     }
 
     public static SettingsFragment instance() {
@@ -35,6 +45,12 @@ public class SettingsFragment extends BaseFragment {
         return inflater.inflate(getLayoutID(), container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loadAddtionalComponents();
+    }
+
     public int getLayoutID() {
         return R.layout.fragment_system_settings;
     }
@@ -48,6 +64,33 @@ public class SettingsFragment extends BaseFragment {
     }
 
     public void loadAddtionalComponents() {
-        return;
+        loadUIComponents();
+        addAdaptersOrListeners();
+    }
+    private void loadUIComponents() {
+        mEditTextAddr=(EditText)getView().findViewById(R.id.fragment_system_setting_editText_addr);
+        mEditTextPort=(EditText)getView().findViewById(R.id.fragment_system_setting_editText_port);
+        mButtonFinish=(Button)getView().findViewById(R.id.fragment_system_setting_button_finish);
+    }
+    private void addAdaptersOrListeners()
+    {
+        try
+        {
+            mButtonFinish.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String strAddr=mEditTextAddr.getText().toString();
+                    String strPort=mEditTextPort.getText().toString();
+                    if(!strAddr.equals(""))
+                        rcmanager.instance().setHostName(strAddr);
+                    if(!strPort.equals(""))
+                        rcmanager.instance().setPort(Integer.parseInt(strPort));
+                    rcmanager.instance().onWifiStateChanged();
+                }
+            });
+        }
+        catch(NullPointerException npe) {
+            Log.d(TAG,"::addAdapterOrListeners#NullPointerException#"+npe.getMessage());
+        }
     }
 }

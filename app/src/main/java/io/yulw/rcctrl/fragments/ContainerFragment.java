@@ -60,10 +60,6 @@ public class ContainerFragment extends BaseFragment {
         mToolbar.setNavigationIcon(R.drawable.ic_ab_drawer);
         mToolbar.setTitleTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
         //mToolbar.setScrollbarFadingEnabled(true);
-        mToolbar.setScrollX(10);;
-        mToolbar.setScrollY(10);;
-        mToolbar.setVerticalScrollBarEnabled(true);
-        mToolbar.setHorizontalScrollBarEnabled(true);
         Log.d(TAG, "Fragments Titles Loaded.");
         for (String s : mViewPagerTabsTitles)
             Log.d(TAG, "tab# " + s);

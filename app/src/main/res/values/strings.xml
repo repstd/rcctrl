@@ -24,7 +24,6 @@
     <string-array name="fragment_shortcuts_titles">
         <item name="framgment_shortcuts_title_video">RC Video Playing</item>
         <item name="framgment_shortcuts_title_scenes">RC Scene Rendering</item>
-        <item name="framgment_shortcuts_title_settings">LOGS</item>
     </string-array>
     <string name="toolbar_hint_main">RC Client</string>>
 </resources>

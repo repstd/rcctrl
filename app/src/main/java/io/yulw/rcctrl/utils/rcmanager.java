@@ -7,7 +7,8 @@ package io.yulw.rcctrl.utils;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
 
-public class rcmanager {
+public class rcmanager
+{
     private static rcmanager mInst = null;
     private Handler mHomeActivityHandler;
     private String mLastHostName;
@@ -18,8 +19,8 @@ public class rcmanager {
     rcmanager() {
         //@yulw,default paremeters
         mLastPort = 20714;
-        //mLastHostName="10.108.61.29";
-        mLastHostName = "10.108.59.160";
+        mLastHostName="10.108.61.29";
+        //mLastHostName = "10.108.59.160";
         mWifi = null;
         mCurPara = null;
     }
@@ -39,7 +40,7 @@ public class rcmanager {
     }
 
     public void setPort(int port) {
-        onWifiStateChanged(mWifi);
+        mLastPort=port;
     }
 
     public String getHostName() {

@@ -25,6 +25,12 @@ public class DetailedFragment extends BaseFragment {
     }
 
     public int getLayoutID() {
+        Bundle args=getArguments();
+        if(args!=null) {
+            if(args.get("LayoutId")!=null) {
+                return args.getInt("LayoutId");
+            }
+        }
         return R.layout.fragment_system_settings;
     }
 
