@@ -24,14 +24,14 @@
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/fragment_system_setting_editText"
+        android:id="@+id/fragment_system_setting_editText_addr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="addr"></EditText>
 
     <EditText
-        android:id="@+id/framgment_system_setting_editText"
+        android:id="@+id/fragment_system_setting_editText_port"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -39,7 +39,7 @@
         android:inputType="number" />
 
     <Button
-        android:id="@+id/framgment_system_setting_button"
+        android:id="@+id/fragment_system_setting_button_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Finished Setting" />

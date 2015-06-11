@@ -6,30 +6,28 @@ package io.yulw.rcctrl.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
-import android.widget.ListView;
-
+import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import io.yulw.rcctrl.R;
-import io.yulw.rcctrl.adapter.ShortcutsFragmentAdapter;
+import io.yulw.rcctrl.adapter.ShortcutFragmentRecyclerViewAdapter;
 
 public class ShortcutsFragment extends BaseFragment {
     private static ShortcutsFragment mInst = null;
     private final String TAG = "ShortcutFragment";
     ArrayList<String> mShortcutsTitle;
-    private ListView mShortcutsListView;
-    private ExpandableListView mShortcutExpandMenuView;
+    RecyclerView mShortcutRecycleview;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     public ShortcutsFragment() {
         super();
     }
-
     public static ShortcutsFragment instance() {
         if (mInst == null)
             mInst = new ShortcutsFragment();
@@ -74,29 +72,21 @@ public class ShortcutsFragment extends BaseFragment {
         }
     }
 
-    private void loadUIComponents() throws NullPointerException {
-        mShortcutsListView = (ListView) getView().findViewById(R.id.fragment_shortcut_listView);
+    private void loadUIComponents() throws NullPointerException  {
+        mShortcutRecycleview=(RecyclerView)getView().findViewById(R.id.fragment_shortcuts_recycler_view);
+
     }
 
-    private void addAdaptersOrListeners() throws NullPointerException {
-        mShortcutsTitle = new ArrayList<String>(Arrays.asList(getView().getResources().getStringArray(R.array.fragment_shortcuts_titles)));
-        ShortcutsFragmentAdapter adapter = new ShortcutsFragmentAdapter(mShortcutsTitle);
-        adapter.setInflater(getActivity().getLayoutInflater());
-        mShortcutsListView.offsetTopAndBottom(5);
-        mShortcutsListView.setAdapter(adapter);
+    private void addAdaptersOrListeners() throws NullPointerException
+    {
+        mShortcutRecycleview.setHasFixedSize(true);
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mShortcutRecycleview.setLayoutManager(mLayoutManager);
 
-//        DetailedFragment previewFrag = (DetailedFragment) mShortcutsListView.getAdapter().getItem(1);
-//        if(previewFrag==null) {
-//            Log.d(TAG, "Can't find DetailedFrag#PreviewListView.");
-//            return;
-//        }
-//        mShortcutExpandMenuView = (ExpandableListView) previewFrag.getView().findViewById(R.id.fragment_shortcut_expand_menu_view);
-//        if (mShortcutExpandMenuView == null)
-//            Log.d(TAG, "ExpandListViewNotFound.");
-//        else {
-//            Log.d(TAG, "ExpandListViewFound.");
-//            //mShortcutExpandMenuView.setBackground((Drawable) getActivity().getResources().getDrawable(R.drawable.background));
-//            mShortcutExpandMenuView.setAdapter(new ShortcutsFragmentsExpandableViewAdapter(getActivity().getLayoutInflater()));
-//        }
+        // specify an adapter (see also next example)
+        String[] titles=getActivity().getResources().getStringArray(R.array.fragment_shortcuts_titles);
+        mAdapter = new ShortcutFragmentRecyclerViewAdapter(getActivity(),titles);
+        mShortcutRecycleview.setAdapter(mAdapter);
     }
 }
