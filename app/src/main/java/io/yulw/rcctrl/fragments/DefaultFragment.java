@@ -59,7 +59,7 @@ public class DefaultFragment extends BaseFragment {
     }
 
     public int getLayoutID() {
-        return R.layout.activity_main;
+        return R.layout.fragment_default;
     }
 
     public String getToolbarTitle() {
@@ -76,9 +76,9 @@ public class DefaultFragment extends BaseFragment {
     }
 
     private void loadUIComponents() {
-        mEditTextProgram = (EditText) getView().findViewById(R.id.editText_progams);
-        mSwitch = (Switch) getView().findViewById(R.id.switch_on_off);
-        mButtonSend = (Button) getView().findViewById(R.id.button_send);
+        mEditTextProgram = (EditText) getView().findViewById(R.id.fragment_default_editText);
+        mSwitch = (Switch) getView().findViewById(R.id.fragment_default_switch_on_off);
+        mButtonSend = (Button) getView().findViewById(R.id.fragment_default_button_send);
     }
 
     private void addAdaptersOrListeners() {

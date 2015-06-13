@@ -3,7 +3,9 @@
     android:id="@+id/fragment_default_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.yulw.rcctrl.activity.HomeActivity">
+    android:background="@color/colorPrimary"
+    tools:context="io.yulw.rcctrl.activity.HomeActivity"
+    >
 
     <EditText
         android:id="@+id/fragment_default_editText"

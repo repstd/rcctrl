@@ -7,12 +7,11 @@ package io.yulw.rcctrl.fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.RecyclerView;
-import java.util.ArrayList;
 
 import io.yulw.rcctrl.R;
 import io.yulw.rcctrl.adapter.ShortcutFragmentRecyclerViewAdapter;
@@ -20,7 +19,6 @@ import io.yulw.rcctrl.adapter.ShortcutFragmentRecyclerViewAdapter;
 public class ShortcutsFragment extends BaseFragment {
     private static ShortcutsFragment mInst = null;
     private final String TAG = "ShortcutFragment";
-    ArrayList<String> mShortcutsTitle;
     RecyclerView mShortcutRecycleview;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -47,7 +45,6 @@ public class ShortcutsFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.d(TAG, "::onViewCreated");
         loadAddtionalComponents();
     }
 
@@ -83,10 +80,10 @@ public class ShortcutsFragment extends BaseFragment {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(getActivity());
         mShortcutRecycleview.setLayoutManager(mLayoutManager);
-
         // specify an adapter (see also next example)
         String[] titles=getActivity().getResources().getStringArray(R.array.fragment_shortcuts_titles);
         mAdapter = new ShortcutFragmentRecyclerViewAdapter(getActivity(),titles);
         mShortcutRecycleview.setAdapter(mAdapter);
+        mShortcutRecycleview.setEnabled(true);
     }
 }

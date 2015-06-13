@@ -33,4 +33,4 @@
         android:background="@color/material_blue_grey_900"
         android:dividerHeight="2dp"
         tools:context=".NavigationFragment" />
-</LinearLayout><!-- From: file:/C:/Users/yulw/StudioWorkspace/rcctrl/app/src/main/res/layout/screen_home_navigation_fragment_menu.xml -->
+</LinearLayout><!-- From: file:/C:/Users/Administrator/StudioWorkspace/rcctrl/app/src/main/res/layout/screen_home_navigation_fragment_menu.xml -->

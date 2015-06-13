@@ -13,6 +13,7 @@
     <string-array name="screen_home_view_pager_tabs_titles">
         <item name="tab_home_view_view_pager_default">Default</item>
         <item name="tab_home_view_view_pager_system_settings">SystemSetting</item>
+        <item name="tab_home_view_view_pager_Shortcuts">Shortcuts</item>
     </string-array>
     <string-array name="screen_home_view_fragment_menu_titles">
         <item name="tab_home_view_fragment_menu_default">Default</item>
@@ -21,8 +22,9 @@
         <item name="tab_home_view_fragment_menu_about">About</item>
     </string-array>
     <string-array name="fragment_shortcuts_titles">
-        <item name="framgment_shortcuts_title_video">RC Video Playing</item>
-        <item name="framgment_shortcuts_title_scenes">RC Scene Rendering</item>
+        <item name="framgment_shortcuts_title_video">RCVideo Playing#Shortcuts for control multiview videos rendering remotely.</item>
+        <item name="framgment_shortcuts_title_scenes">RCScene Rendering#Shortcuts for control 3D scenes rendering.</item>
+        <item name="framgment_shortcuts_title_system">RCHost System Setting#Shortcuts for system manipulation.Reboot/Shutdown supported.</item>
     </string-array>
     <string name="toolbar_hint_main">RC Client</string>>
 </resources>

@@ -4,14 +4,16 @@
     android:id="@+id/fragment_shorrcuts_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".HomeActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_shortcuts_recycler_view"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        />
 
 
 </LinearLayout>
-<!-- From: file:/C:/Users/yulw/StudioWorkspace/rcctrl/app/src/main/res/layout/fragment_shortcuts.xml -->
+<!-- From: file:/C:/Users/Administrator/StudioWorkspace/rcctrl/app/src/main/res/layout/fragment_shortcuts.xml -->

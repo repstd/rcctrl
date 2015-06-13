@@ -9,41 +9,41 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import io.yulw.rcctrl.R;
+import io.yulw.rcctrl.utils.rcframe;
 
-public class DetailedFragment extends BaseFragment {
-    private int mLayoutId;
+public class DetailedFragment<T extends  rcframe> extends BaseFragment
+{
+    private T mDetailedImpl;
     private String TAG = "DetailedFragment";
-
     public DetailedFragment() {
         super();
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(getLayoutID(), container, false);
     }
 
     public int getLayoutID() {
-        Bundle args=getArguments();
-        if(args!=null) {
-            if(args.get("LayoutId")!=null) {
-                return args.getInt("LayoutId");
-            }
-        }
-        return R.layout.fragment_system_settings;
+        return getImpl().getLayoutID();
     }
 
     public String getToolbarTitle() {
-        return "RC CLIENT";
+        return getImpl().getToolbarTitle();
     }
 
     public String getName() {
-        return "DetailedFragments";
+        return getImpl().getName();
     }
 
     public void loadAddtionalComponents() {
-        return;
+        getImpl().loadAddtionalComponents();;
+    }
+
+    public void setImpl(T impl) {
+        mDetailedImpl=impl;
+    }
+    public T getImpl() {
+        return mDetailedImpl;
     }
 
 }

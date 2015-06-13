@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/fragment_shorcut_preview_layout"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:id="@+id/fragment_shortcut_preview_layout"
+    >
 
-    <ExpandableListView
-        android:id="@+id/fragment_shortcut_expand_view"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ExpandableListView>
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_shortcut_preview_cardView"
+        android:background="@color/colorPrimary"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fragment_shortcut_preview_image"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_person_black_48dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fragment_shortcut_preview_title"
+                android:layout_toRightOf="@+id/fragment_shortcut_preview_image"
+                android:layout_alignParentTop="true"
+                android:textSize="30sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fragment_shortcut_preview_description"
+                android:layout_toRightOf="@+id/fragment_shortcut_preview_image"
+                android:layout_below="@+id/fragment_shortcut_preview_title"
+                />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
+
