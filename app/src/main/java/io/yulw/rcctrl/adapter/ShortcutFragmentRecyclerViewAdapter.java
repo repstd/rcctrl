@@ -13,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import io.yulw.rcctrl.R;
-import io.yulw.rcctrl.fragments.DetailedFragment;
-import io.yulw.rcctrl.utils.rcframe;
 
 /**
  * Created by yulw on 2015/6/11.
@@ -46,8 +44,6 @@ public class ShortcutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Sh
     public int getItemCount() {
         return mItemDataSet.length;
     }
-
-
     public static class PreviewItemViewHolder extends RecyclerView.ViewHolder
     {
         private CardView mCardView;
@@ -55,7 +51,8 @@ public class ShortcutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Sh
         private TextView mTitleTextView;
         private TextView mDescTextView;
         private final String TAG="PreviewItemViewHolder";
-        public PreviewItemViewHolder(final Activity activity , View itemView) {
+        public PreviewItemViewHolder(final Activity activity , View itemView)
+        {
             super(itemView);
             try
             {
@@ -66,7 +63,9 @@ public class ShortcutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Sh
                     public void onClick(View v) {
                         FragmentManager fm=((ActionBarActivity)activity).getSupportFragmentManager();
                         FragmentTransaction ft=fm.beginTransaction();
-                        ft.replace(R.id.screen_home_fragment_container, detailedFragmentManager.instance().createFragment(SHORTCUTS.SHORTCUT_VIDEO));
+                        ft.addToBackStack("back");
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        ft.replace(R.id.screen_drawer,detailedFragmentManager.instance().createFragment(activity,getPosition()));
                         ft.commit();
                     }
                 } );
@@ -105,52 +104,7 @@ public class ShortcutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Sh
         }
     }
 }
-class detailedFragmentManager
-{
-    private static detailedFragmentManager mInst=null;
-    public static detailedFragmentManager instance()
-    {
-        if(mInst==null)
-            mInst=new detailedFragmentManager();
-        return mInst;
-    }
-    DetailedFragment<?> createFragment(SHORTCUTS type) {
-        switch(type)
-        {
-            case SHORTCUT_VIDEO:
-                return createVideoShortcut();
-            case SHORTCUT_SCENE:
-                return createSceneShortcut();
-            case SHORTCUT_SYS:
-                return createSysShortcut();
-            case SHORTCUT_LOG:
-                return createLogShortcut();
-            default:
-                break;
-        }
-        return null;
-    }
-    DetailedFragment<?> createVideoShortcut() {
-        DetailedFragment<rcVideoShortcut> detail=new DetailedFragment<rcVideoShortcut>();
-        detail.setImpl(new rcVideoShortcut());
-        return detail;
-    }
-    DetailedFragment<?> createSceneShortcut() {
-        DetailedFragment<rcSceneShortcut> detail=new DetailedFragment<rcSceneShortcut>();
-        detail.setImpl(new rcSceneShortcut());
-        return detail;
-    }
-    DetailedFragment<?> createSysShortcut() {
-        DetailedFragment<rcSysShortcut> detail=new DetailedFragment<rcSysShortcut>();
-        detail.setImpl(new rcSysShortcut());
-        return detail;
-    }
-    DetailedFragment<?> createLogShortcut() {
-        DetailedFragment<rcLogShortcut> detail=new DetailedFragment<rcLogShortcut>();
-        detail.setImpl(new rcLogShortcut());
-        return detail;
-    }
-}
+
 class shortcutPreviewItem
 {
     private int mDrawableId;
@@ -182,97 +136,5 @@ class shortcutPreviewItem
     }
     public String getDesc() {
         return mItemDesc;
-    }
-}
-class rcVideoShortcut implements rcframe
-{
-    public rcVideoShortcut() {
-        super();
-    }
-    @Override
-    public int getLayoutID() {
-        return R.layout.fragment_shortcut_detail_sys;
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return "RCVideoPlaying";
-    }
-
-    @Override
-    public String getName() {
-        return "rcVideoShortcut";
-    }
-
-    @Override
-    public void loadAddtionalComponents() {
-        //TODO
-    }
-}
-class rcSceneShortcut implements rcframe
-{
-    @Override
-    public int getLayoutID() {
-        return R.layout.fragment_shortcut_detail_scene;
-    }
-
-    @Override
-    public String getName() {
-        return "rcSceneShortcut";
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return "RCSceneRendring";
-    }
-
-    @Override
-    public void loadAddtionalComponents() {
-        //TODO
-    }
-}
-class rcSysShortcut implements rcframe
-{
-    @Override
-    public int getLayoutID() {
-        return R.layout.fragment_shortcut_detail_sys;
-    }
-
-    @Override
-    public String getName() {
-        return "rcSysShortcut";
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return "RCHostSystem RemoteControlling";
-    }
-
-    @Override
-    public void loadAddtionalComponents() {
-        //TODO
-    }
-}
-class rcLogShortcut implements rcframe
-{
-    @Override
-    public int getLayoutID() {
-        return R.layout.fragment_shortcut_detail_log;
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return "RCHost Log";
-    }
-
-    @Override
-    public String getName() {
-        return "rcLogShortcut";
-    }
-
-    @Override
-    public void loadAddtionalComponents() {
-        //TODO
-
     }
 }

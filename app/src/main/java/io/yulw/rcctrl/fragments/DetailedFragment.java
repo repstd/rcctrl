@@ -23,6 +23,12 @@ public class DetailedFragment<T extends  rcframe> extends BaseFragment
         return inflater.inflate(getLayoutID(), container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getImpl().loadAddtionalComponents();
+    }
+
     public int getLayoutID() {
         return getImpl().getLayoutID();
     }

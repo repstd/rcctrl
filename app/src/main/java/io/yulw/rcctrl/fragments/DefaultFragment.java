@@ -76,10 +76,10 @@ public class DefaultFragment extends BaseFragment {
     }
 
     private void loadUIComponents() {
-        mEditTextProgram = (EditText) getView().findViewById(R.id.fragment_default_editText);
-        mSwitch = (Switch) getView().findViewById(R.id.fragment_default_switch_on_off);
-        mButtonSend = (Button) getView().findViewById(R.id.fragment_default_button_send);
-    }
+    mEditTextProgram = (EditText) getView().findViewById(R.id.fragment_default_editText);
+    mSwitch = (Switch) getView().findViewById(R.id.fragment_default_switch_on_off);
+    mButtonSend = (Button) getView().findViewById(R.id.fragment_default_button_send);
+}
 
     private void addAdaptersOrListeners() {
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

@@ -1,6 +1,8 @@
 package io.yulw.rcctrl.fragments;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -59,7 +61,19 @@ public class ContainerFragment extends BaseFragment {
         mToolbar.setTitle(getToolbarTitle());
         mToolbar.setNavigationIcon(R.drawable.ic_ab_drawer);
         mToolbar.setTitleTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
+
         //mToolbar.setScrollbarFadingEnabled(true);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm=getActivity().getSupportFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ft.addToBackStack("container");
+                ft.replace(R.id.screen_home_fragment_container,NavigationFragment.instance());
+                ft.commit();
+            }
+        });
         Log.d(TAG, "Fragments Titles Loaded.");
         for (String s : mViewPagerTabsTitles)
             Log.d(TAG, "tab# " + s);

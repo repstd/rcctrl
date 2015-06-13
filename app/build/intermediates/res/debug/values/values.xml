@@ -3,9 +3,10 @@
     <!-- From: file:/C:/Users/Administrator/StudioWorkspace/rcctrl/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="fragment_shortcuts_titles">
-        <item name="framgment_shortcuts_title_video">RCVideo Playing#Shortcuts for control multiview videos rendering remotely.</item>
-        <item name="framgment_shortcuts_title_scenes">RCScene Rendering#Shortcuts for control 3D scenes rendering.</item>
+        <item name="framgment_shortcuts_title_video">RCVideo Playing#Shortcuts for controlling multi-view videos rendering remotely.</item>
+        <item name="framgment_shortcuts_title_scenes">RCScene Rendering#Shortcuts for controlling 3D scenes rendering.</item>
         <item name="framgment_shortcuts_title_system">RCHost System Setting#Shortcuts for system manipulation.Reboot/Shutdown supported.</item>
+        <item name="framgment_shortcuts_title_logs">RCHost System Logs#Shortcuts for viewing the logs of the rchost.</item>
     </string-array>
     <string-array name="screen_home_view_fragment_menu_titles">
         <item name="tab_home_view_fragment_menu_default">Default</item>

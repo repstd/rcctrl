@@ -26,8 +26,8 @@ public final class R {
 		public static final int fab_size_normal = 0x7f070044;
 	}
 	public static final class drawable {
-		public static final int shadow = 0x7f02003b;
-		public static final int shadow_mini = 0x7f02003c;
+		public static final int shadow = 0x7f02003c;
+		public static final int shadow_mini = 0x7f02003d;
 	}
 	public static final class id {
 		public static final int mini = 0x7f0c0013;

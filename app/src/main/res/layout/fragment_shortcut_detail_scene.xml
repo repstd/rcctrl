@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_floating_material_light"
+    >
 
-</LinearLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/fragment_shortcut_detail_scene_screen_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_material_light"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Base.TextAppearance.AppCompat"
+        tools:context=".Toolbar" />
+
+    <ImageView
+        android:id="@+id/fragment_shortcut_detail_scene_imageView"
+        android:layout_below="@+id/fragment_shortcut_detail_scene_screen_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/background" />
+
+
+</RelativeLayout>

@@ -40,7 +40,7 @@ public class NavigationFragmentAdapter extends BaseAdapter {
             TextView textView = new TextView(mInflater.getContext());
             textView.setText(mMenuTitles.get(position));
             textView.setTextSize(15);
-            textView.setTextColor(mInflater.getContext().getResources().getColor(R.color.accent_material_light));
+            textView.setTextColor(mInflater.getContext().getResources().getColor(R.color.background_floating_material_light));
             return textView;
         } catch (NullPointerException npe) {
         } catch (Exception e) {

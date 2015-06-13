@@ -63,5 +63,6 @@ public abstract class BaseActivity extends ActionBarActivity implements rcframe 
         mToolbar.setNavigationIcon(R.drawable.ic_ab_drawer);
         mToolbar.setTitle(getToolbarTitle());
         mToolbar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));
+
     }
 }
