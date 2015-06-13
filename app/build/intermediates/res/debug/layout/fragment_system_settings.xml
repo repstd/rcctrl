@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_system_setting_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ContainerFragment"
+    >
 
     <ImageView
         android:id="@+id/fragment_system_setting_imageView"
@@ -20,13 +23,14 @@
         android:ems="10"
         android:text="@string/fragment_general_setting_description"
         android:textAlignment="center"
-        android:textColor="#ffff3c48"
+        android:textColor="@color/background_floating_material_light"
         android:textSize="20dp" />
 
     <EditText
         android:id="@+id/fragment_system_setting_editText_addr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="addr"></EditText>
 
@@ -34,6 +38,7 @@
         android:id="@+id/fragment_system_setting_editText_port"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="port"
         android:inputType="number" />
@@ -42,6 +47,7 @@
         android:id="@+id/fragment_system_setting_button_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Finished Setting" />
 </LinearLayout>
 <!-- From: file:/C:/Users/Administrator/StudioWorkspace/rcctrl/app/src/main/res/layout/fragment_system_settings.xml -->

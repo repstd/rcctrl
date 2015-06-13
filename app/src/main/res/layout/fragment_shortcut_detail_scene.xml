@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_floating_material_light"
-    >
+    android:background="@color/background_floating_material_light">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/fragment_shortcut_detail_scene_screen_toolbar"
@@ -17,11 +16,11 @@
 
     <ImageView
         android:id="@+id/fragment_shortcut_detail_scene_imageView"
-        android:layout_below="@+id/fragment_shortcut_detail_scene_screen_toolbar"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:scaleType="centerCrop"
+        android:layout_below="@+id/fragment_shortcut_detail_scene_screen_toolbar"
         android:layout_marginTop="0dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/background" />
 
 

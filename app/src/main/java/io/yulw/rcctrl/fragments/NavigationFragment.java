@@ -17,18 +17,19 @@ import io.yulw.rcctrl.adapter.NavigationFragmentAdapter;
  * Created by yulw on 6/9/2015.
  */
 public class NavigationFragment extends BaseFragment {
+    private static NavigationFragment mInst = null;
     private final String TAG = "NavigationFragment";
     ArrayList<String> mFragmentsList;
     private LayoutInflater mInflater = null;
-    private static NavigationFragment mInst=null;
-    public static NavigationFragment instance()
-    {
-        if(mInst==null)
-            mInst=new NavigationFragment();
-        return mInst;
-    }
+
     public NavigationFragment() {
         super();
+    }
+
+    public static NavigationFragment instance() {
+        if (mInst == null)
+            mInst = new NavigationFragment();
+        return mInst;
     }
 
     @Override

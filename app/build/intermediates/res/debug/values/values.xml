@@ -320,7 +320,7 @@
     <string name="define_FloatingActionButton"/>
     <!-- From: file:/C:/Users/Administrator/StudioWorkspace/rcctrl/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="fragment_general_setting_description">Setting the Master IP and Port.</string>
+    <string name="fragment_general_setting_description">Setting the IP and Port.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_world">Hello world!</string>
     <!-- From: file:/C:/Users/Administrator/StudioWorkspace/rcctrl/app/build/intermediates/exploded-aar/com.melnykov/floatingactionbutton/1.1.0/res/values/values.xml -->

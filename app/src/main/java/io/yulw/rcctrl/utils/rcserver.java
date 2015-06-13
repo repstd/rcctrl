@@ -21,7 +21,8 @@ class rcreceiver extends Thread {
     rcreceiver(rcserver context) {
         m_cxt = context;
         try {
-            m_svr = new DatagramSocket(8000);
+            //m_svr = new DatagramSocket(rcmanager.instance().getPort());
+            m_svr=rccontrol.instance().getSocket();
             m_svr.setSoTimeout(0);
             m_svr.setReuseAddress(true);
         } catch (SocketException e) {
@@ -29,10 +30,11 @@ class rcreceiver extends Thread {
             e.printStackTrace();
         }
     }
-
+    @Override
     public void run() {
         int cnt = 100;
-        while (cnt-- > 0) {
+        while (cnt-- > 0)
+        {
             byte[] buf = new byte[100];
             DatagramPacket packet = new DatagramPacket(buf, buf.length);
             try {
@@ -49,6 +51,13 @@ class rcreceiver extends Thread {
                 e.printStackTrace();
                 Log.d(TAG, "Error in write to logBuffer.Error: " + e.getMessage());
             }
+        }
+    }
+    public void CloseSocket() {
+        try {
+            if(!m_svr.isClosed())
+                m_svr.close();
+        }catch (Exception e) {
         }
     }
 }
@@ -109,7 +118,8 @@ public class rcserver {
     public void stop() {
         for (rcreceiver worker : m_workers.values()) {
             try {
-                worker.stop();
+                //worker.stop();
+                //worker.CloseSocket();;
                 Log.d(TAG, "thread " + worker.getId() + " stoped.");
             } catch (Exception e) {
                 e.printStackTrace();

@@ -22,7 +22,8 @@ import io.yulw.rcctrl.utils.rcutil;
 /**
  * Created by yulw on 2015/6/10.
  */
-public class ContainerFragment extends BaseFragment {
+public class ContainerFragment extends BaseFragment
+{
     private static ContainerFragment mInst = null;
     private final String TAG = "ContainerFragment";
     private ArrayList<String> mViewPagerTabsTitles = null;
@@ -66,11 +67,11 @@ public class ContainerFragment extends BaseFragment {
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm=getActivity().getSupportFragmentManager();
-                FragmentTransaction ft=fm.beginTransaction();
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.addToBackStack("container");
-                ft.replace(R.id.screen_home_fragment_container,NavigationFragment.instance());
+                ft.replace(R.id.screen_home_fragment_container, NavigationFragment.instance());
                 ft.commit();
             }
         });
@@ -102,5 +103,11 @@ public class ContainerFragment extends BaseFragment {
 
     public String getName() {
         return "ContainerFragment";
+    }
+    public PagerSlidingTabStrip getSlidingTap()  {
+        return mPagerTabStrip;
+    }
+    public ViewPager getmViewPager()  {
+        return mViewPager;
     }
 }

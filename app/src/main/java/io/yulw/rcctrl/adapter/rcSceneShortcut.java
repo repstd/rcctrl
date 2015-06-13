@@ -7,12 +7,13 @@ import io.yulw.rcctrl.R;
 /**
  * Created by yulw on 6/13/2015.
  */
-public class rcSceneShortcut extends rcShortcut
-{
+public class rcSceneShortcut extends rcShortcut {
     private Activity mActivity;
+
     public rcSceneShortcut(Activity activity) {
-        mActivity=activity;
+        mActivity = activity;
     }
+
     @Override
     public int getLayoutID() {
         return R.layout.fragment_shortcut_detail_scene;
@@ -31,6 +32,6 @@ public class rcSceneShortcut extends rcShortcut
     @Override
     public void loadAddtionalComponents() {
         //TODO
-        loadToolbar(mActivity,R.id.fragment_shortcut_detail_scene_screen_toolbar);
+        loadToolbar(mActivity, R.id.fragment_shortcut_detail_scene_screen_toolbar);
     }
 }

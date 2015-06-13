@@ -11,8 +11,9 @@ public class rcSysShortcut extends rcShortcut {
     private Activity mActivity;
 
     public rcSysShortcut(Activity activity) {
-       mActivity=activity;
+        mActivity = activity;
     }
+
     @Override
     public int getLayoutID() {
         return R.layout.fragment_shortcut_detail_sys;
@@ -31,6 +32,6 @@ public class rcSysShortcut extends rcShortcut {
     @Override
     public void loadAddtionalComponents() {
         //TODO
-        loadToolbar(mActivity,R.id.fragment_shortcut_detail_sys_screen_toolbar);
+        loadToolbar(mActivity, R.id.fragment_shortcut_detail_sys_screen_toolbar);
     }
 }

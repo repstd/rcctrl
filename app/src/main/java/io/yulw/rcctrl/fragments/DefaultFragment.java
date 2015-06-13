@@ -19,9 +19,10 @@ import java.util.HashMap;
 
 import io.yulw.rcctrl.R;
 import io.yulw.rcctrl.utils.rccontrol;
-import io.yulw.rcctrl.utils.rcutil;
 import io.yulw.rcctrl.utils.rctasks;
+import io.yulw.rcctrl.utils.rcutil;
 import io.yulw.rcctrl.utils.rcworker;
+
 public class DefaultFragment extends BaseFragment {
     private static DefaultFragment mInst = null;
     private final String TAG = "DefaultFragment";
@@ -76,10 +77,10 @@ public class DefaultFragment extends BaseFragment {
     }
 
     private void loadUIComponents() {
-    mEditTextProgram = (EditText) getView().findViewById(R.id.fragment_default_editText);
-    mSwitch = (Switch) getView().findViewById(R.id.fragment_default_switch_on_off);
-    mButtonSend = (Button) getView().findViewById(R.id.fragment_default_button_send);
-}
+        mEditTextProgram = (EditText) getView().findViewById(R.id.fragment_default_editText);
+        mSwitch = (Switch) getView().findViewById(R.id.fragment_default_switch_on_off);
+        mButtonSend = (Button) getView().findViewById(R.id.fragment_default_button_send);
+    }
 
     private void addAdaptersOrListeners() {
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -126,15 +127,18 @@ public class DefaultFragment extends BaseFragment {
         return msg;
     }
 }
-class backgroundMessagerTask implements rctasks
-{
-    private  String mMsg;
+
+class backgroundMessagerTask implements rctasks {
+    private String mMsg;
+
     public backgroundMessagerTask(String msg) {
-        mMsg=msg;
+        mMsg = msg;
     }
+
     public void execute() {
         rccontrol.instance().sendPacket(mMsg);
     }
+
     public Object getTask() {
         return mMsg;
     }

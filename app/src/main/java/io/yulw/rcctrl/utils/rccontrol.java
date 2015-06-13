@@ -103,4 +103,7 @@ public class rccontrol {
             Log.d(TAG, "Error in Closing The Socket.Error: " + e.getMessage());
         }
     }
+    public DatagramSocket getSocket() {
+        return m_socket;
+    }
 }

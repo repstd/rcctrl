@@ -4,8 +4,8 @@
     android:id="@+id/screen_home_navigation_fragment_menu_layout"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
 
 
     <ImageView
@@ -20,16 +20,16 @@
         android:id="@+id/screen_home_fragment_menu_imageView_bg"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:scaleType="centerCrop"
         android:layout_above="@+id/screen_home_fragment_menu_listView"
+        android:scaleType="centerCrop"
         android:src="@color/background_floating_material_light" />
 
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/screen_home_fragment_menu_listView"
         android:layout_width="226dp"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
         android:layout_below="@+id/screen_home_fragment_menu_imageView_bg"
+        android:layout_gravity="start"
         android:background="@color/material_blue_grey_900"
         android:dividerHeight="2dp"
         tools:context=".NavigationFragment" />

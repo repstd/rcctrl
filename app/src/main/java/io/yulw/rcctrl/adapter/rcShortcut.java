@@ -13,15 +13,13 @@ import io.yulw.rcctrl.utils.rcframe;
 /**
  * Created by yulw on 6/13/2015.
  */
-public abstract  class rcShortcut implements rcframe
-{
+public abstract class rcShortcut implements rcframe {
     private Toolbar mToolbar;
 
     //load a common toolbar and register an onClickListener
-    protected void loadToolbar(final Activity activity,int toolbarId)
-    {
-        final ActionBarActivity homeActivity=(ActionBarActivity)activity;
-        mToolbar=(Toolbar)activity.findViewById(toolbarId);
+    protected void loadToolbar(final Activity activity, int toolbarId) {
+        final ActionBarActivity homeActivity = (ActionBarActivity) activity;
+        mToolbar = (Toolbar) activity.findViewById(toolbarId);
         if (mToolbar != null) {
             homeActivity.setSupportActionBar(mToolbar);
             homeActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -32,8 +30,8 @@ public abstract  class rcShortcut implements rcframe
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm=homeActivity.getSupportFragmentManager();
-                FragmentTransaction ft=fm.beginTransaction();
+                FragmentManager fm = homeActivity.getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 fm.popBackStack();
                 fm.executePendingTransactions();

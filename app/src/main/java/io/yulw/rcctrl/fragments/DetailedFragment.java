@@ -11,13 +11,14 @@ import android.view.ViewGroup;
 
 import io.yulw.rcctrl.utils.rcframe;
 
-public class DetailedFragment<T extends  rcframe> extends BaseFragment
-{
+public class DetailedFragment<T extends rcframe> extends BaseFragment {
     private T mDetailedImpl;
     private String TAG = "DetailedFragment";
+
     public DetailedFragment() {
         super();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(getLayoutID(), container, false);
@@ -42,14 +43,16 @@ public class DetailedFragment<T extends  rcframe> extends BaseFragment
     }
 
     public void loadAddtionalComponents() {
-        getImpl().loadAddtionalComponents();;
+        getImpl().loadAddtionalComponents();
+        ;
+    }
+
+    public T getImpl() {
+        return mDetailedImpl;
     }
 
     public void setImpl(T impl) {
-        mDetailedImpl=impl;
-    }
-    public T getImpl() {
-        return mDetailedImpl;
+        mDetailedImpl = impl;
     }
 
 }

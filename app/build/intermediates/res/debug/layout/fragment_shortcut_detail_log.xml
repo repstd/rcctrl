@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/fragment_shortcut_detail_log_screen_toolbar"
         android:layout_width="match_parent"
@@ -12,24 +12,25 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Base.TextAppearance.AppCompat"
         tools:context=".Toolbar" />
+
     <ImageView
         android:id="@+id/fragment_shortcut_detail_log_imageView"
-        android:layout_below="@+id/fragment_shortcut_detail_log_screen_toolbar"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:scaleType="centerCrop"
+        android:layout_below="@+id/fragment_shortcut_detail_log_screen_toolbar"
         android:layout_marginTop="0dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/background" />
 
     <TextView
+        android:id="@+id/fragment_shortcut_detail_log_textView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="New Text"
-        android:id="@+id/fragment_shortcut_detail_log_textView"
         android:layout_below="@+id/fragment_shortcut_detail_log_imageView"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
         android:background="@color/background_floating_material_light"
-        android:layout_marginTop="0dp"/>
+        android:text="New Text" />
 
 </RelativeLayout>
 <!-- From: file:/C:/Users/Administrator/StudioWorkspace/rcctrl/app/src/main/res/layout/fragment_shortcut_detail_log.xml -->

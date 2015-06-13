@@ -26,6 +26,7 @@ public class ShortcutsFragment extends BaseFragment {
     public ShortcutsFragment() {
         super();
     }
+
     public static ShortcutsFragment instance() {
         if (mInst == null)
             mInst = new ShortcutsFragment();
@@ -69,20 +70,19 @@ public class ShortcutsFragment extends BaseFragment {
         }
     }
 
-    private void loadUIComponents() throws NullPointerException  {
-        mShortcutRecycleview=(RecyclerView)getView().findViewById(R.id.fragment_shortcuts_recycler_view);
+    private void loadUIComponents() throws NullPointerException {
+        mShortcutRecycleview = (RecyclerView) getView().findViewById(R.id.fragment_shortcuts_recycler_view);
 
     }
 
-    private void addAdaptersOrListeners() throws NullPointerException
-    {
+    private void addAdaptersOrListeners() throws NullPointerException {
         mShortcutRecycleview.setHasFixedSize(true);
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(getActivity());
         mShortcutRecycleview.setLayoutManager(mLayoutManager);
         // specify an adapter (see also next example)
-        String[] titles=getActivity().getResources().getStringArray(R.array.fragment_shortcuts_titles);
-        mAdapter = new ShortcutFragmentRecyclerViewAdapter(getActivity(),titles);
+        String[] titles = getActivity().getResources().getStringArray(R.array.fragment_shortcuts_titles);
+        mAdapter = new ShortcutFragmentRecyclerViewAdapter(getActivity(), titles);
         mShortcutRecycleview.setAdapter(mAdapter);
         mShortcutRecycleview.setEnabled(true);
     }
