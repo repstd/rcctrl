@@ -1,6 +1,8 @@
 package io.yulw.rcctrl.utils;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,73 +10,80 @@ import android.util.Log;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.SocketException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class rcreceiver extends Thread {
-    private final String TAG = "rcreceiver.";
-    rcserver m_cxt = null;
-    DatagramSocket m_svr;
-
-    rcreceiver(rcserver context) {
-        m_cxt = context;
+class rcReceiverTask implements rctasks
+{
+    private final String TAG="rcReceiverTask";
+    private boolean mIsFinished;
+    private Context m_context;
+    private rcserver m_svr;
+    private static  DatagramSocket m_socket;
+    static {
         try {
-            //m_svr = new DatagramSocket(rcmanager.instance().getPort());
-            m_svr=rccontrol.instance().getSocket();
-            m_svr.setSoTimeout(0);
-            m_svr.setReuseAddress(true);
-        } catch (SocketException e) {
-            // TODO Auto-generated catch block
+            DatagramSocket m_socket=new DatagramSocket(8000,null);
+            m_socket.setSoTimeout(0);
+        }catch (Exception e) {
+
+        }
+    }
+    public rcReceiverTask(Context context,rcserver svr) {
+        m_context=context;
+        m_svr=svr;
+        mIsFinished=false;
+    }
+    @Override
+    public void execute()  {
+        try {
+            //Log.d(TAG,"execting....");
+            DatagramPacket packet=new DatagramPacket(new byte[100],100);
+            m_socket.receive(packet);
+            String log=new String(packet.getData(),0,packet.getLength());
+            Intent intent=new Intent();
+            intent.setAction("LogServer");
+            intent.putExtra("log", log);
+            m_svr.appendBuffer(log);
+            Log.d(TAG, "::execute#" + log);
+            //LocalBroadcastManager.getInstance(m_context).sendBroadcast(intent);
+        }catch (NullPointerException e) {
+            Log.d(TAG,"::execute#NullPointerException."+e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            Log.d(TAG,"::execute#Exception."+e.getMessage());
             e.printStackTrace();
         }
     }
+
     @Override
-    public void run() {
-        int cnt = 100;
-        while (cnt-- > 0)
-        {
-            byte[] buf = new byte[100];
-            DatagramPacket packet = new DatagramPacket(buf, buf.length);
-            try {
-                if (m_cxt != null)
-                    m_cxt.appendBuffer(new String("waiting..."));
-                else
-                    m_cxt.appendBuffer(new String("rcserver is null"));
-                m_svr.receive(packet);
-                m_cxt.appendBuffer(packet.getAddress().toString() + "#" + packet.getData().toString());
-                //String newbuf=rccontrol.instance().getPacket();
-                //m_cxt.appendBuffer(newbuf);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                Log.d(TAG, "Error in write to logBuffer.Error: " + e.getMessage());
-            }
-        }
+    public Object getTask() {
+        return null;
     }
-    public void CloseSocket() {
-        try {
-            if(!m_svr.isClosed())
-                m_svr.close();
-        }catch (Exception e) {
-        }
+
+    @Override
+    public boolean isFinished() {
+        if(rccontrol.instance().isClosed())
+            return true;
+        else
+            return false;
     }
 }
 
-public class rcserver {
+public class rcserver
+{
     private final String TAG = "rcserver";
     int m_thCapacity;
     int m_msgCapacity;
     Handler m_handler = null;
-    HashMap<Integer, rcreceiver> m_workers;
+    HashMap<Integer, rcworker<rcReceiverTask>> m_workers;
     Queue<String> m_msg;
 
     @SuppressLint("UseSparseArrays")
     public rcserver(int threadCapacity, int msgCapacity) {
         m_thCapacity = threadCapacity;
         m_msgCapacity = msgCapacity;
-        m_workers = new HashMap<Integer, rcreceiver>();
+        m_workers = new HashMap<Integer, rcworker<rcReceiverTask>>();
         m_msg = new LinkedList<String>();
     }
 
@@ -82,7 +91,7 @@ public class rcserver {
     public rcserver(Handler handler, int threadCapacity, int msgCapacity) {
         m_thCapacity = threadCapacity;
         m_msgCapacity = msgCapacity;
-        m_workers = new HashMap<Integer, rcreceiver>();
+        m_workers = new HashMap<Integer, rcworker<rcReceiverTask>>();
         m_msg = new LinkedList<String>();
         m_handler = handler;
     }
@@ -97,13 +106,13 @@ public class rcserver {
 
     private void create() {
         for (int id = 0; id < m_thCapacity; id++) {
-            m_workers.put(id, new rcreceiver(this));
+            m_workers.put(id, new rcworker<rcReceiverTask>(new rcReceiverTask(null,this)));
         }
     }
 
-    public void start() {
+    synchronized public void start() {
         create();
-        for (rcreceiver worker : m_workers.values()) {
+        for (rcworker<?> worker : m_workers.values()) {
             try {
                 Log.d(TAG, "thread " + worker.getId() + " started");
                 worker.start();
@@ -115,12 +124,13 @@ public class rcserver {
         }
     }
 
-    public void stop() {
-        for (rcreceiver worker : m_workers.values()) {
+    synchronized public void stop() {
+        for (rcworker<?> worker : m_workers.values()) {
             try {
-                //worker.stop();
-                //worker.CloseSocket();;
-                Log.d(TAG, "thread " + worker.getId() + " stoped.");
+                if(worker!=null) {
+                    worker.rcSafeStop();
+                    Log.d(TAG, "thread " + worker.getId() + " stoped.");
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.d(TAG, "Error in stoping thread " + worker.getId() + " "
@@ -129,8 +139,8 @@ public class rcserver {
         }
     }
 
-    public void suspend() {
-        for (rcreceiver worker : m_workers.values()) {
+    synchronized public void suspend() {
+        for (rcworker<?> worker : m_workers.values()) {
             try {
                 worker.suspend();
                 Log.d(TAG, "thread " + worker.getId() + " stoped.");
@@ -180,9 +190,7 @@ public class rcserver {
             m_handler.sendMessage(msg);
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d(TAG,
-                    "Exception in sending data to handler.Error: "
-                            + e.getMessage());
+            Log.d(TAG, "Exception in sending data to handler.Error: " + e.getMessage());
         }
     }
 }

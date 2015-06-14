@@ -28,6 +28,7 @@ public class rccontrol {
     }
 
     public rcpara getPara() {
+        Log.d(TAG,"getPara");
         return m_para;
     }
 
@@ -54,13 +55,29 @@ public class rccontrol {
     }
 
     public synchronized String getPacket() {
-        DatagramPacket packet = new DatagramPacket(new byte[100], 100);
+        DatagramPacket packet = new DatagramPacket(new byte[100], 100,null,getPara().getPort());
         try {
-            m_socket.receive(packet);
-        } catch (IOException e) {
+//            while(m_socket!=null&&!m_socket.isClosed()) {
+//                m_socket.receive(packet);
+//                if(packet.getLength()!=0)
+//                    break;
+//            }
+            if(m_socket!=null&&!m_socket.isClosed())
+                m_socket.receive(packet);
+        }
+        catch (SocketException e) {
+            e.printStackTrace();
+            Log.d(TAG, "Error in Getting Message.SocketException: " + e.getMessage());
+            return "Error";
+        }
+        catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            Log.d(TAG, "Error in Getting Message.Error: " + e.getMessage());
+            Log.d(TAG, "Error in Getting Message.IOException: " + e.getMessage());
+            return "Error";
+        }
+        catch (Exception e) {
+            Log.d(TAG,"Exception#"+e.getMessage());
             return "Error";
         }
         //return "Test";

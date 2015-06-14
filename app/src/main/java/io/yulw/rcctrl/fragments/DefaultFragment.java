@@ -130,16 +130,21 @@ public class DefaultFragment extends BaseFragment {
 
 class backgroundMessagerTask implements rctasks {
     private String mMsg;
-
+    private boolean mIsFinished;
     public backgroundMessagerTask(String msg) {
         mMsg = msg;
+        mIsFinished=false;
     }
 
     public void execute() {
         rccontrol.instance().sendPacket(mMsg);
+        mIsFinished=true;
     }
 
     public Object getTask() {
         return mMsg;
+    }
+    public boolean isFinished() {
+        return mIsFinished;
     }
 }

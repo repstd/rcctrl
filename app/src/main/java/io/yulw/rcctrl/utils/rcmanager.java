@@ -6,6 +6,7 @@ package io.yulw.rcctrl.utils;
 
 import android.net.wifi.WifiManager;
 import android.os.Handler;
+import android.util.Log;
 
 public class rcmanager {
     private static rcmanager mInst = null;
@@ -14,8 +15,10 @@ public class rcmanager {
     private int mLastPort;
     private rcpara mCurPara;
     private WifiManager mWifi;
-
-    rcmanager() {
+    private rcserver mSvr=null;
+    private final String TAG="rcmanager";
+    rcmanager()
+    {
         //@yulw,default paremeters
         mLastPort = 20714;
         mLastHostName = "10.108.61.29";
@@ -65,5 +68,17 @@ public class rcmanager {
         mWifi = wifi;
         mCurPara = new rcpara(wifi, mLastHostName, mLastPort);
         rccontrol.instance().reset(mCurPara);
+    }
+    synchronized  public void addLogServer() {
+        Log.d(TAG,"Start");
+        mSvr=new rcserver(10,100);
+        mSvr.start();
+    }
+    synchronized  public void removeServer() {
+        if(mSvr!=null) {
+            mSvr.stop();
+            mSvr=null;
+        }
+        Log.d(TAG,"All Stoped.");
     }
 }

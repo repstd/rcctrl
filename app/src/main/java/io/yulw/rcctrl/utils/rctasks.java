@@ -8,4 +8,5 @@ public interface rctasks {
 
     abstract Object getTask();
 
+    abstract boolean isFinished();
 }

@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import io.yulw.rcctrl.R;
-import io.yulw.rcctrl.utils.rcserver;
 
 /**
  * Created by yulw on 6/13/2015.
@@ -23,7 +22,6 @@ public class rcLogShortcut extends rcShortcut {
     private ImageView mLogImageView;
     private TextView mLogTextView;
     private Activity mActivity;
-    private rcserver mLogServer;
     private Handler mLogHandler ;
     private Toolbar mToolbar;
     rcLogShortcut(Activity activity) {
@@ -36,8 +34,6 @@ public class rcLogShortcut extends rcShortcut {
                 return false;
             }
         });
-        mLogServer=new rcserver(mLogHandler,10,100);
-        //mLogServer.start();
     }
 
     @Override
@@ -83,7 +79,6 @@ public class rcLogShortcut extends rcShortcut {
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mLogServer.stop();
                 FragmentManager fm = homeActivity.getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
