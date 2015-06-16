@@ -13,7 +13,7 @@ public class rccontrol {
     private static rccontrol instance = null;
     private final String TAG = "rccontrol";
     private HashMap<String, Integer> m_runningApps;
-    private DatagramSocket m_socket;
+    private DatagramSocket m_socket=null;
     private rcpara m_para;
 
     private rccontrol() {
@@ -42,7 +42,7 @@ public class rccontrol {
             m_socket.send(packet);
         } catch (SocketTimeoutException e) {
             e.printStackTrace();
-            Log.d(TAG, "SocketTImedoutException in Sending Message.Error: " + e.getMessage());
+            Log.d(TAG, "SocketTimeoutException in Sending Message.Error: " + e.getMessage());
         } catch (java.net.SocketException e) {
             e.printStackTrace();
             Log.d(TAG, "SocketException in Sending Message.Error: " + e.getMessage());
@@ -55,7 +55,7 @@ public class rccontrol {
     }
 
     public synchronized String getPacket() {
-        DatagramPacket packet = new DatagramPacket(new byte[100], 100,null,getPara().getPort());
+        DatagramPacket packet = new DatagramPacket(new byte[100], 100);
         try {
 //            while(m_socket!=null&&!m_socket.isClosed()) {
 //                m_socket.receive(packet);
@@ -107,7 +107,10 @@ public class rccontrol {
     }
 
     public boolean isClosed() {
-        return m_socket.isClosed();
+        if(m_socket==null)
+            return true;
+        else
+            return m_socket.isClosed();
     }
 
     public synchronized void close() {

@@ -1,52 +1,54 @@
 package io.yulw.rcctrl.utils;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class rcReceiverTask implements rctasks
+class rcReceiverTask implements rctask
 {
     private final String TAG="rcReceiverTask";
     private boolean mIsFinished;
     private Context m_context;
     private rcserver m_svr;
-    private static  DatagramSocket m_socket;
-    static {
-        try {
-            DatagramSocket m_socket=new DatagramSocket(8000,null);
-            m_socket.setSoTimeout(0);
-        }catch (Exception e) {
-
-        }
-    }
+    private DatagramSocket m_socket;
+    private int mTimeout;
     public rcReceiverTask(Context context,rcserver svr) {
         m_context=context;
         m_svr=svr;
         mIsFinished=false;
+        mTimeout=50;
+        try  {
+            m_socket=new DatagramSocket(rcmanager.instance().getLogServerPort());
+            m_socket.setReuseAddress(true);
+            m_socket.setBroadcast(false);
+            m_socket.setSoTimeout(mTimeout);
+        }
+        catch (SocketException e) {
+            m_socket=null;
+        }
+        m_context=m_svr.getContext();
     }
     @Override
     public void execute()  {
         try {
             //Log.d(TAG,"execting....");
-            DatagramPacket packet=new DatagramPacket(new byte[100],100);
-            m_socket.receive(packet);
-            String log=new String(packet.getData(),0,packet.getLength());
-            Intent intent=new Intent();
-            intent.setAction("LogServer");
-            intent.putExtra("log", log);
-            m_svr.appendBuffer(log);
-            Log.d(TAG, "::execute#" + log);
-            //LocalBroadcastManager.getInstance(m_context).sendBroadcast(intent);
+            DatagramPacket packet=requestLog();
+            respond(packet);
         }catch (NullPointerException e) {
             Log.d(TAG,"::execute#NullPointerException."+e.getMessage());
             e.printStackTrace();
@@ -55,7 +57,38 @@ class rcReceiverTask implements rctasks
             e.printStackTrace();
         }
     }
-
+    public DatagramPacket requestLog() {
+        DatagramPacket inPacket=null;
+        try {
+            String msg="androidClient#"+rcmanager.instance().getPara().getHost().getLocalHost().toString();
+            DatagramPacket outPacket=new DatagramPacket(msg.getBytes(),msg.length(),rcmanager.instance().getPara().getHost(),rcmanager.instance().getLogServerPort());
+            inPacket=new DatagramPacket(new byte[100],100);
+            m_socket.send(outPacket);
+            m_socket.receive(inPacket);
+        }catch (SocketException e) {
+            Log.d(TAG,"::requestLog#SocketException#"+e.getMessage()) ;
+        }
+        catch (UnknownHostException e) {
+            Log.d(TAG,"::requestLog#UnknowmHostException#"+e.getMessage());
+        }
+        catch (IOException e) {
+            Log.d(TAG,"::requestLog#IOException#"+e.getMessage()) ;
+        }
+        return inPacket;
+    }
+    private void respond(DatagramPacket packet)
+    {
+        if(packet==null||packet.getPort()==-1)
+            return;
+        String log=new String(packet.getData(),0,packet.getLength());
+        Intent intent=new Intent();
+        intent.setAction("LogServer");
+        intent.putExtra("log", log);
+        m_svr.appendBuffer(log);
+        Log.d(TAG, "::execute#" + log);
+        if(m_context!=null)
+            LocalBroadcastManager.getInstance(m_context).sendBroadcast(intent);
+    }
     @Override
     public Object getTask() {
         return null;
@@ -63,10 +96,7 @@ class rcReceiverTask implements rctasks
 
     @Override
     public boolean isFinished() {
-        if(rccontrol.instance().isClosed())
-            return true;
-        else
-            return false;
+        return rccontrol.instance().isClosed();
     }
 }
 
@@ -78,7 +108,7 @@ public class rcserver
     Handler m_handler = null;
     HashMap<Integer, rcworker<rcReceiverTask>> m_workers;
     Queue<String> m_msg;
-
+    Activity m_Activity;
     @SuppressLint("UseSparseArrays")
     public rcserver(int threadCapacity, int msgCapacity) {
         m_thCapacity = threadCapacity;
@@ -87,7 +117,6 @@ public class rcserver
         m_msg = new LinkedList<String>();
     }
 
-    @SuppressLint("UseSparseArrays")
     public rcserver(Handler handler, int threadCapacity, int msgCapacity) {
         m_thCapacity = threadCapacity;
         m_msgCapacity = msgCapacity;
@@ -96,6 +125,13 @@ public class rcserver
         m_handler = handler;
     }
 
+    public rcserver(Activity activity, int threadCapacity, int msgCapacity) {
+        m_thCapacity = threadCapacity;
+        m_msgCapacity = msgCapacity;
+        m_workers = new HashMap<Integer, rcworker<rcReceiverTask>>();
+        m_msg = new LinkedList<String>();
+        m_Activity=activity;
+    }
     public int getThreadCapacity() {
         return m_thCapacity;
     }
@@ -159,9 +195,9 @@ public class rcserver
     synchronized void appendBuffer(byte[] newbuf) {
         if (m_msg.size() >= getMessageCapacity())
             m_msg.remove();
-        m_msg.add(newbuf.toString());
+        m_msg.add(new String(newbuf));
         if (m_handler != null)
-            notifyHandler(newbuf.toString());
+            notifyHandler(new String(newbuf));
     }
 
     synchronized void appendBuffer(String newbuf) {
@@ -192,5 +228,11 @@ public class rcserver
             e.printStackTrace();
             Log.d(TAG, "Exception in sending data to handler.Error: " + e.getMessage());
         }
+    }
+    synchronized public Context getContext() {
+        if(m_Activity!=null)
+            return m_Activity.getApplicationContext();
+        else
+            return null;
     }
 }

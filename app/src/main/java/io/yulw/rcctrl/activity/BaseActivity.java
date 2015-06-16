@@ -20,8 +20,8 @@ public abstract class BaseActivity extends ActionBarActivity implements rcframe 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
-        loadToolbr();
-        loadAddtionalComponents();
+        loadToolbar();
+        loadAdditionalComponents();
     }
 
     @Override
@@ -54,7 +54,7 @@ public abstract class BaseActivity extends ActionBarActivity implements rcframe 
         super.onPause();
     }
 
-    protected void loadToolbr() {
+    protected void loadToolbar() {
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

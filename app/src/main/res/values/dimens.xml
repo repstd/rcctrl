@@ -50,7 +50,7 @@
     <dimen name="margin_twenty_two">@dimen/twenty_two</dimen>
     <dimen name="margin_twenty_four">@dimen/twenty_four</dimen>
     <dimen name="margin_twenty_six">@dimen/twenty_six</dimen>
-    <dimen name="margin_wenty_eight">@dimen/twenty_eight</dimen>
+    <dimen name="margin_twenty_eight">@dimen/twenty_eight</dimen>
 
     <!-- Padding -->
     <dimen name="padding_two">@dimen/two</dimen>

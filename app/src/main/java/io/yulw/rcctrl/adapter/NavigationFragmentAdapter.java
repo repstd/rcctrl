@@ -43,6 +43,7 @@ public class NavigationFragmentAdapter extends BaseAdapter {
             textView.setTextColor(mInflater.getContext().getResources().getColor(R.color.background_floating_material_light));
             return textView;
         } catch (NullPointerException npe) {
+
         } catch (Exception e) {
         }
         return null;

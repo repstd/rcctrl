@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 import io.yulw.rcctrl.R;
 import io.yulw.rcctrl.utils.rccontrol;
-import io.yulw.rcctrl.utils.rctasks;
+import io.yulw.rcctrl.utils.rctask;
 import io.yulw.rcctrl.utils.rcutil;
 import io.yulw.rcctrl.utils.rcworker;
 
@@ -56,7 +56,7 @@ public class DefaultFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadAddtionalComponents();
+        loadAdditionalComponents();
     }
 
     public int getLayoutID() {
@@ -71,15 +71,21 @@ public class DefaultFragment extends BaseFragment {
         return "DefaultFragment";
     }
 
-    public void loadAddtionalComponents() {
+    public void loadAdditionalComponents() {
         loadUIComponents();
         addAdaptersOrListeners();
     }
 
     private void loadUIComponents() {
-        mEditTextProgram = (EditText) getView().findViewById(R.id.fragment_default_editText);
-        mSwitch = (Switch) getView().findViewById(R.id.fragment_default_switch_on_off);
-        mButtonSend = (Button) getView().findViewById(R.id.fragment_default_button_send);
+        try {
+
+            mEditTextProgram = (EditText) getView().findViewById(R.id.fragment_default_editText);
+            mSwitch = (Switch) getView().findViewById(R.id.fragment_default_switch_on_off);
+            mButtonSend = (Button) getView().findViewById(R.id.fragment_default_button_send);
+        }
+        catch (NullPointerException e) {
+            Log.d(TAG,"::loadUIComponents#NullPointerException#"+e.getMessage());
+        }
     }
 
     private void addAdaptersOrListeners() {
@@ -100,7 +106,7 @@ public class DefaultFragment extends BaseFragment {
         mButtonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new rcworker<backgroundMessagerTask>(new backgroundMessagerTask(encodeMsg())).start();
+                new rcworker<backgroundMessengerTask>(new backgroundMessengerTask(encodeMsg())).start();
             }
         });
 
@@ -108,7 +114,7 @@ public class DefaultFragment extends BaseFragment {
 
     private String encodeMsg() {
         mCmd_name = this.mEditTextProgram.getText().toString();
-        rcutil.showMessageAsToast(getActivity().getApplicationContext(), "eocodeMsg.current: " + mCmd_name + " " + mCmd_op);
+        rcutil.showMessageAsToast(getActivity().getApplicationContext(), "encodeMsg.current: " + mCmd_name + " " + mCmd_op);
         /*
          * @yulw,message to be sent to the rchost.eg. rcrender_on
 		 */
@@ -116,22 +122,22 @@ public class DefaultFragment extends BaseFragment {
         if (mMapRunningApps.get(mCmd_name) == null && mCmd_op == "on") {
             mMapRunningApps.put(mCmd_name, mCmd_op);
             msg = mCmd_name + "#" + mCmd_op;
-            Log.d(TAG, "eocodeMsg.current: " + msg);
+            Log.d(TAG, "encodeMsg.current: " + msg);
         } else if (mMapRunningApps.get(mCmd_name) != null
                 && mCmd_op == "off") {
             mMapRunningApps.remove(mCmd_name);
             msg = mCmd_name + "#" + mCmd_op;
-            Log.d(TAG, "eocodeMsg.current: " + msg);
+            Log.d(TAG, "encodeMsg.current: " + msg);
         } else
             msg = "";
         return msg;
     }
 }
 
-class backgroundMessagerTask implements rctasks {
+class backgroundMessengerTask implements rctask {
     private String mMsg;
     private boolean mIsFinished;
-    public backgroundMessagerTask(String msg) {
+    public backgroundMessengerTask(String msg) {
         mMsg = msg;
         mIsFinished=false;
     }

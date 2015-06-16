@@ -1548,11 +1548,11 @@ containing a value of this type.
         public static final int margin_ten=0x7f07004e;
         public static final int margin_twelve=0x7f07004f;
         public static final int margin_twenty=0x7f070050;
-        public static final int margin_twenty_four=0x7f070051;
-        public static final int margin_twenty_six=0x7f070052;
-        public static final int margin_twenty_two=0x7f070053;
-        public static final int margin_two=0x7f070054;
-        public static final int margin_wenty_eight=0x7f070055;
+        public static final int margin_twenty_eight=0x7f070051;
+        public static final int margin_twenty_four=0x7f070052;
+        public static final int margin_twenty_six=0x7f070053;
+        public static final int margin_twenty_two=0x7f070054;
+        public static final int margin_two=0x7f070055;
         public static final int padding_eight=0x7f070056;
         public static final int padding_eighteen=0x7f070057;
         public static final int padding_four=0x7f070058;
@@ -1690,7 +1690,6 @@ containing a value of this type.
         public static final int fragment_default_editText=0x7f0c0041;
         public static final int fragment_default_layout=0x7f0c0040;
         public static final int fragment_default_switch_on_off=0x7f0c0042;
-        public static final int fragment_shorrcuts_layout=0x7f0c0052;
         public static final int fragment_shortcut_detail_log_imageView=0x7f0c0045;
         public static final int fragment_shortcut_detail_log_screen_toolbar=0x7f0c0044;
         public static final int fragment_shortcut_detail_log_textView=0x7f0c0046;
@@ -1705,6 +1704,7 @@ containing a value of this type.
         public static final int fragment_shortcut_preview_image=0x7f0c004f;
         public static final int fragment_shortcut_preview_layout=0x7f0c004d;
         public static final int fragment_shortcut_preview_title=0x7f0c0050;
+        public static final int fragment_shortcuts_layout=0x7f0c0052;
         public static final int fragment_shortcuts_recycler_view=0x7f0c0053;
         public static final int fragment_system_setting_button_finish=0x7f0c0059;
         public static final int fragment_system_setting_editText_addr=0x7f0c0057;

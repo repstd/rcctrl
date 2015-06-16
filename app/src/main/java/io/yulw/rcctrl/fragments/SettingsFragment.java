@@ -51,7 +51,7 @@ public class SettingsFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadAddtionalComponents();
+        loadAdditionalComponents();
     }
 
     public int getLayoutID() {
@@ -66,15 +66,20 @@ public class SettingsFragment extends BaseFragment {
         return "SettingsFragments";
     }
 
-    public void loadAddtionalComponents() {
+    public void loadAdditionalComponents() {
         loadUIComponents();
         addAdaptersOrListeners();
     }
 
     private void loadUIComponents() {
-        mEditTextAddr = (EditText) getView().findViewById(R.id.fragment_system_setting_editText_addr);
-        mEditTextPort = (EditText) getView().findViewById(R.id.fragment_system_setting_editText_port);
-        mButtonFinish = (Button) getView().findViewById(R.id.fragment_system_setting_button_finish);
+        try{
+            mEditTextAddr = (EditText) getView().findViewById(R.id.fragment_system_setting_editText_addr);
+            mEditTextPort = (EditText) getView().findViewById(R.id.fragment_system_setting_editText_port);
+            mButtonFinish = (Button) getView().findViewById(R.id.fragment_system_setting_button_finish);
+        }
+        catch (NullPointerException e) {
+            Log.d(TAG,"::loadUIComponents#NullPointerException#"+e.getMessage());
+        }
     }
 
     private void addAdaptersOrListeners() {

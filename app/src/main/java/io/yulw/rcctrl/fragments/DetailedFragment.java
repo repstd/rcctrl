@@ -27,7 +27,7 @@ public class DetailedFragment<T extends rcframe> extends BaseFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getImpl().loadAddtionalComponents();
+        getImpl().loadAdditionalComponents();
     }
 
     public int getLayoutID() {
@@ -42,9 +42,8 @@ public class DetailedFragment<T extends rcframe> extends BaseFragment {
         return getImpl().getName();
     }
 
-    public void loadAddtionalComponents() {
-        getImpl().loadAddtionalComponents();
-        ;
+    public void loadAdditionalComponents() {
+        getImpl().loadAdditionalComponents();
     }
 
     public T getImpl() {

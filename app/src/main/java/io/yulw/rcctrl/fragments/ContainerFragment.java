@@ -50,15 +50,20 @@ public class ContainerFragment extends BaseFragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadAddtionalComponents();
+        loadAdditionalComponents();
     }
 
-    public void loadAddtionalComponents() {
+    public void loadAdditionalComponents() {
         mViewPagerTabsTitles = new ArrayList<String>(Arrays.asList(getActivity().getResources().getStringArray(R.array.screen_home_view_pager_tabs_titles)));
         mFragmentMenuTitles = new ArrayList<String>(Arrays.asList(getActivity().getResources().getStringArray(R.array.screen_home_view_fragment_menu_titles)));
-        mViewPager = (ViewPager) getView().findViewById(R.id.screen_home_fragment_container_view_pager);
-        mPagerTabStrip = (PagerSlidingTabStrip) getView().findViewById(R.id.screen_home_fragment_container_pager_sliding_tab);
-        mToolbar = (Toolbar) getView().findViewById(R.id.screen_toolbar);
+        try {
+            mViewPager = (ViewPager) getView().findViewById(R.id.screen_home_fragment_container_view_pager);
+            mPagerTabStrip = (PagerSlidingTabStrip) getView().findViewById(R.id.screen_home_fragment_container_pager_sliding_tab);
+            mToolbar = (Toolbar) getView().findViewById(R.id.screen_toolbar);
+        }
+        catch (NullPointerException e) {
+            Log.d(TAG,"::loadAdditionalComponents#NullPointerException#"+e.getMessage());
+        }
         mToolbar.setTitle(getToolbarTitle());
         mToolbar.setNavigationIcon(R.drawable.ic_ab_drawer);
         mToolbar.setTitleTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
@@ -90,9 +95,8 @@ public class ContainerFragment extends BaseFragment
         }
         //mPagerTabStrip.setEnabled(true);
         mPagerTabStrip.setViewPager(mViewPager);
-        rcutil.showMessageAsToast(getActivity().getApplicationContext(), "AdditionalComponentesLoaded.");
+        rcutil.showMessageAsToast(getActivity().getApplicationContext(), "AdditionalComponentsLoaded.");
     }
-
     public String getToolbarTitle() {
         return "RC CLIENT";
     }
@@ -107,7 +111,7 @@ public class ContainerFragment extends BaseFragment
     public PagerSlidingTabStrip getSlidingTap()  {
         return mPagerTabStrip;
     }
-    public ViewPager getmViewPager()  {
+    public ViewPager getViewPager()  {
         return mViewPager;
     }
 }

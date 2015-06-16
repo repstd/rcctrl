@@ -27,4 +27,7 @@ public abstract class BaseFragment extends Fragment implements rcframe {
         mActivity = null;
         mContext = null;
     }
+    public void unLoadAdditionalComponents() {
+       //Not Implemented
+    }
 }

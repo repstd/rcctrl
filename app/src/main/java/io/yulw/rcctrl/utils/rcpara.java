@@ -2,6 +2,7 @@ package io.yulw.rcctrl.utils;
 
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
+import android.net.LocalSocketAddress;
 import android.util.Log;
 
 import java.net.InetAddress;
@@ -25,11 +26,15 @@ public class rcpara {
                 m_broadcastAddr = getBroadcastAddr(m_wifi);
             else
                 m_broadcastAddr = InetAddress.getByName(m_hostname);
-        } catch (Exception e) {
+            Log.d(TAG, "rcpara init end.BroadCasteAddr:" + m_broadcastAddr.toString());
+        }
+        catch (NullPointerException e) {
+            Log.d(TAG,"#rcpara#NullPointerException#"+e.getMessage()) ;
+        }
+        catch (Exception e) {
             // TODO: handle exception
             Log.d(TAG, "Error in calculate broadcast address.Error: " + e.getMessage());
         }
-        Log.d(TAG, "rcpara init end.BroadCasteAddr:" + m_broadcastAddr.toString());
     }
 
     public WifiManager getWiifiManager() {
@@ -44,7 +49,7 @@ public class rcpara {
         return m_broadcastAddr;
     }
 
-    InetAddress getBroadcastAddr(WifiManager wifi) throws UnknownHostException {
+    private InetAddress getBroadcastAddr(WifiManager wifi) throws UnknownHostException {
         DhcpInfo dhcp = m_wifi.getDhcpInfo();
         if (dhcp == null) {
             Log.d(TAG, "Could not get dhcp info");

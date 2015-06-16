@@ -1,10 +1,15 @@
 package io.yulw.rcctrl.adapter;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import io.yulw.rcctrl.R;
+import io.yulw.rcctrl.utils.rcmanager;
 
 /**
  * Created by yulw on 6/13/2015.
@@ -24,6 +30,7 @@ public class rcLogShortcut extends rcShortcut {
     private Activity mActivity;
     private Handler mLogHandler ;
     private Toolbar mToolbar;
+    private BroadcastReceiver mBroadcastReceiver;
     rcLogShortcut(Activity activity) {
         mActivity = activity;
         mLogHandler=new Handler( new Handler.Callback() {
@@ -52,9 +59,10 @@ public class rcLogShortcut extends rcShortcut {
     }
 
     @Override
-    public void loadAddtionalComponents() {
+    public void loadAdditionalComponents() {
         mLogTextView = (TextView) mActivity.findViewById(R.id.fragment_shortcut_detail_log_textView);
-        Log.d(TAG, "::loadAdditionalComponents");
+        mLogTextView.setTextColor(mActivity.getResources().getColor(R.color.colorPrimary));
+        Log.d(TAG, "::rcLogShortCut::loadAdditionalComponents");
         try {
 
             loadToolbar(mActivity, R.id.fragment_shortcut_detail_log_screen_toolbar);
@@ -64,6 +72,7 @@ public class rcLogShortcut extends rcShortcut {
         } catch (Exception e) {
             Log.d(TAG, "::loadAdditionalComponents#Exception" + e.getMessage());
         }
+        addLogbroadcastReceiver();
     }
     @Override
     protected void loadToolbar(final Activity activity, int toolbarId) {
@@ -73,7 +82,12 @@ public class rcLogShortcut extends rcShortcut {
             homeActivity.setSupportActionBar(mToolbar);
             homeActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        mToolbar.setTitle(getToolbarTitle());
+        try {
+            mToolbar.setTitle(getToolbarTitle());
+        }
+        catch (NullPointerException e) {
+            Log.d(TAG,"#loadToolbar#NullPointerException#"+e.getMessage()) ;
+        }
         mToolbar.setTitleTextColor(activity.getResources().getColor(R.color.colorPrimary));
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_36dp);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -86,5 +100,23 @@ public class rcLogShortcut extends rcShortcut {
                 fm.executePendingTransactions();
             }
         });
+    }
+    private void addLogbroadcastReceiver() {
+        IntentFilter intentFilter=new IntentFilter();
+        intentFilter.addAction("LogServer");
+        mBroadcastReceiver=new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String log=intent.getExtras().getString("log");
+                Log.d(TAG,"::BroadcastReceiver::onReceive#"+log);
+                String text=mLogTextView.getText().toString();
+                mLogTextView.setText(text+"\n"+log);
+            }
+        };
+        rcmanager.instance().addLogServer(mActivity, 1, 10);
+        LocalBroadcastManager.getInstance(mActivity.getApplicationContext()).registerReceiver(mBroadcastReceiver, intentFilter);
+    }
+    private void removeLogBroadcastReceiver() {
+        LocalBroadcastManager.getInstance(mActivity.getApplicationContext()) .unregisterReceiver(mBroadcastReceiver);
     }
 }

@@ -19,7 +19,7 @@ import io.yulw.rcctrl.adapter.ShortcutFragmentRecyclerViewAdapter;
 public class ShortcutsFragment extends BaseFragment {
     private static ShortcutsFragment mInst = null;
     private final String TAG = "ShortcutFragment";
-    RecyclerView mShortcutRecycleview;
+    RecyclerView mShortcutRecyclerview;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -46,7 +46,7 @@ public class ShortcutsFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadAddtionalComponents();
+        loadAdditionalComponents();
     }
 
     public int getLayoutID() {
@@ -61,7 +61,7 @@ public class ShortcutsFragment extends BaseFragment {
         return "ShortcutsFragments";
     }
 
-    public void loadAddtionalComponents() {
+    public void loadAdditionalComponents() {
         try {
             loadUIComponents();
             addAdaptersOrListeners();
@@ -71,19 +71,23 @@ public class ShortcutsFragment extends BaseFragment {
     }
 
     private void loadUIComponents() throws NullPointerException {
-        mShortcutRecycleview = (RecyclerView) getView().findViewById(R.id.fragment_shortcuts_recycler_view);
-
+        try {
+            mShortcutRecyclerview = (RecyclerView) getView().findViewById(R.id.fragment_shortcuts_recycler_view);
+        }
+        catch (NullPointerException e) {
+            Log.d(TAG,"::loadUIComponents#NullPointerException#"+e.getMessage());
+        }
     }
 
     private void addAdaptersOrListeners() throws NullPointerException {
-        mShortcutRecycleview.setHasFixedSize(true);
+        mShortcutRecyclerview.setHasFixedSize(true);
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(getActivity());
-        mShortcutRecycleview.setLayoutManager(mLayoutManager);
+        mShortcutRecyclerview.setLayoutManager(mLayoutManager);
         // specify an adapter (see also next example)
         String[] titles = getActivity().getResources().getStringArray(R.array.fragment_shortcuts_titles);
         mAdapter = new ShortcutFragmentRecyclerViewAdapter(getActivity(), titles);
-        mShortcutRecycleview.setAdapter(mAdapter);
-        mShortcutRecycleview.setEnabled(true);
+        mShortcutRecyclerview.setAdapter(mAdapter);
+        mShortcutRecyclerview.setEnabled(true);
     }
 }

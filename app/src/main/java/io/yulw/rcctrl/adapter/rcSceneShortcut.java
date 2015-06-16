@@ -26,11 +26,11 @@ public class rcSceneShortcut extends rcShortcut {
 
     @Override
     public String getToolbarTitle() {
-        return "RCSceneRendring";
+        return "RCSceneRendering";
     }
 
     @Override
-    public void loadAddtionalComponents() {
+    public void loadAdditionalComponents() {
         //TODO
         loadToolbar(mActivity, R.id.fragment_shortcut_detail_scene_screen_toolbar);
     }

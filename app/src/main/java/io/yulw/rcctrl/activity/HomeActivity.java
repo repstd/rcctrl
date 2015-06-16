@@ -70,8 +70,8 @@ public class HomeActivity extends BaseActivity {
     }
 
     @Override
-    public void loadAddtionalComponents() {
-        rcutil.showMessageAsToast(getApplicationContext(), "AdditionalComponentesLoaded.");
+    public void loadAdditionalComponents() {
+        rcutil.showMessageAsToast(getApplicationContext(), "AdditionalComponentsLoaded.");
     }
 
     public String getToolbarTitle() {
@@ -104,11 +104,11 @@ public class HomeActivity extends BaseActivity {
                             }
                         }
                     } catch (IllegalStateException ile) {
-                        String msg = new String("::addWifiStateChangedFilter::receiver::OnReceive.IllegalStateException: " + ile.getMessage());
+                        String msg = "::addWifiStateChangedFilter::receiver::OnReceive.IllegalStateException: " + ile.getMessage();
                         Log.d(TAG, msg);
                         rcutil.showMessageAsToast(getApplicationContext(), msg);
                     } catch (Exception e) {
-                        String msg = new String("::addWifiStateChangedFilter::receiver::OnReceive.Exception:" + e.getMessage());
+                        String msg = "::addWifiStateChangedFilter::receiver::OnReceive.Exception:" + e.getMessage();
                         Log.d(TAG, msg);
                     }
                 }

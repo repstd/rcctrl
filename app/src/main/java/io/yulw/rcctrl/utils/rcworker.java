@@ -3,7 +3,7 @@ package io.yulw.rcctrl.utils;
 /**
  * Created by yulw on 2015/6/11.
  */
-public class rcworker<T extends rctasks> extends Thread
+public class rcworker<T extends rctask> extends Thread
 {
     private T mTaskImp;
     private volatile Thread mBlinker;
@@ -34,9 +34,6 @@ public class rcworker<T extends rctasks> extends Thread
         super.start();
     }
     private boolean isStop() {
-        if(mBlinker!=null)
-            return false;
-        else
-            return true;
+        return mBlinker == null;
     }
 }

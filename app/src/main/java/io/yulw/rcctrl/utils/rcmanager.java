@@ -4,6 +4,7 @@ package io.yulw.rcctrl.utils;
  * Created by yulw on 2015/6/10.
  */
 
+import android.app.Activity;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.util.Log;
@@ -17,6 +18,9 @@ public class rcmanager {
     private WifiManager mWifi;
     private rcserver mSvr=null;
     private final String TAG="rcmanager";
+    private final int mLogServerPort=20716;
+    private boolean mIsLogServerRunning=false;
+    private Activity mActivity;
     rcmanager()
     {
         //@yulw,default paremeters
@@ -50,9 +54,12 @@ public class rcmanager {
     }
 
     public void setHostName(String hostName) {
+
         mLastHostName = hostName;
     }
-
+    public rcpara getPara() {
+        return mCurPara;
+    }
     public void setHost(String name, int port) {
         setHostName(name);
         setPort(port);
@@ -68,17 +75,32 @@ public class rcmanager {
         mWifi = wifi;
         mCurPara = new rcpara(wifi, mLastHostName, mLastPort);
         rccontrol.instance().reset(mCurPara);
+        if(mIsLogServerRunning) {
+            removeServer();
+            addLogServer();
+        }
     }
     synchronized  public void addLogServer() {
         Log.d(TAG,"Start");
-        mSvr=new rcserver(10,100);
+        mSvr=new rcserver(mActivity,10,100);
         mSvr.start();
+        mIsLogServerRunning=true;
+    }
+    synchronized  public void addLogServer(Activity activity,int threadCnt,int bufMsgCnt) {
+        mActivity=activity;
+        Log.d(TAG,"Start");
+        mSvr=new rcserver(mActivity,threadCnt,bufMsgCnt);
+        mSvr.start();
+        mIsLogServerRunning=true;
     }
     synchronized  public void removeServer() {
         if(mSvr!=null) {
             mSvr.stop();
             mSvr=null;
         }
-        Log.d(TAG,"All Stoped.");
+        mIsLogServerRunning=false;
+    }
+    public int getLogServerPort() {
+        return mLogServerPort;
     }
 }

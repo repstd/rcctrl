@@ -41,7 +41,7 @@ public class NavigationFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadAddtionalComponents();
+        loadAdditionalComponents();
     }
 
     public int getLayoutID() {
@@ -56,14 +56,18 @@ public class NavigationFragment extends BaseFragment {
         return "NavigationFragment";
     }
 
-    public void loadAddtionalComponents() {
+    public void loadAdditionalComponents() {
+        ListView menuList=null;
         try {
-            ListView menuList = (ListView) getView().findViewById(R.id.screen_home_fragment_menu_listView);
-            mFragmentsList = new ArrayList<String>(Arrays.asList(menuList.getResources().getStringArray(R.array.screen_home_view_fragment_menu_titles)));
-            menuList.setAdapter(new NavigationFragmentAdapter(mFragmentsList, mInflater));
-        } catch (NullPointerException npe) {
-            Log.d(TAG, "#loadAddtionalComponents#NullPointerException#" + npe.getMessage());
+            View view=getView();
+            menuList = (ListView) view.findViewById(R.id.screen_home_fragment_menu_listView);
+        } catch (NullPointerException e) {
+            Log.d(TAG, "#loadAdditionalComponents#NullPointerException#" + e.getMessage());
         }
+        if(menuList==null)
+            return;
+        mFragmentsList = new ArrayList<String>(Arrays.asList(menuList.getResources().getStringArray(R.array.screen_home_view_fragment_menu_titles)));
+        menuList.setAdapter(new NavigationFragmentAdapter(mFragmentsList, mInflater));
         return;
     }
 }

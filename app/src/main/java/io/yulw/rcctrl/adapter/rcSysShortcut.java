@@ -30,7 +30,7 @@ public class rcSysShortcut extends rcShortcut {
     }
 
     @Override
-    public void loadAddtionalComponents() {
+    public void loadAdditionalComponents() {
         //TODO
         loadToolbar(mActivity, R.id.fragment_shortcut_detail_sys_screen_toolbar);
     }

@@ -361,11 +361,11 @@ int dimen margin_sixteen 0x7f07004d
 int dimen margin_ten 0x7f07004e
 int dimen margin_twelve 0x7f07004f
 int dimen margin_twenty 0x7f070050
-int dimen margin_twenty_four 0x7f070051
-int dimen margin_twenty_six 0x7f070052
-int dimen margin_twenty_two 0x7f070053
-int dimen margin_two 0x7f070054
-int dimen margin_wenty_eight 0x7f070055
+int dimen margin_twenty_eight 0x7f070051
+int dimen margin_twenty_four 0x7f070052
+int dimen margin_twenty_six 0x7f070053
+int dimen margin_twenty_two 0x7f070054
+int dimen margin_two 0x7f070055
 int dimen padding_eight 0x7f070056
 int dimen padding_eighteen 0x7f070057
 int dimen padding_four 0x7f070058
@@ -499,7 +499,6 @@ int id fragment_default_button_send 0x7f0c0043
 int id fragment_default_editText 0x7f0c0041
 int id fragment_default_layout 0x7f0c0040
 int id fragment_default_switch_on_off 0x7f0c0042
-int id fragment_shorrcuts_layout 0x7f0c0052
 int id fragment_shortcut_detail_log_imageView 0x7f0c0045
 int id fragment_shortcut_detail_log_screen_toolbar 0x7f0c0044
 int id fragment_shortcut_detail_log_textView 0x7f0c0046
@@ -514,6 +513,7 @@ int id fragment_shortcut_preview_description 0x7f0c0051
 int id fragment_shortcut_preview_image 0x7f0c004f
 int id fragment_shortcut_preview_layout 0x7f0c004d
 int id fragment_shortcut_preview_title 0x7f0c0050
+int id fragment_shortcuts_layout 0x7f0c0052
 int id fragment_shortcuts_recycler_view 0x7f0c0053
 int id fragment_system_setting_button_finish 0x7f0c0059
 int id fragment_system_setting_editText_addr 0x7f0c0057

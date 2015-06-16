@@ -31,7 +31,7 @@ public class rcVideoShortcut extends rcShortcut {
     }
 
     @Override
-    public void loadAddtionalComponents() {
+    public void loadAdditionalComponents() {
         //TODO
         loadToolbar(mActivity, R.id.fragment_shortcut_detail_video_screen_toolbar);
     }

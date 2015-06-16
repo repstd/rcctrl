@@ -10,5 +10,6 @@ public interface rcframe {
 
     String getName();
 
-    void loadAddtionalComponents();
+    void loadAdditionalComponents();
+
 }

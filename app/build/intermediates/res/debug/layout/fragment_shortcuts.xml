@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_shorrcuts_layout"
+    android:id="@+id/fragment_shortcuts_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
@@ -15,4 +15,4 @@
 
 
 </LinearLayout>
-<!-- From: file:/C:/Users/Administrator/StudioWorkspace/rcctrl/app/src/main/res/layout/fragment_shortcuts.xml -->
+<!-- From: file:/C:/Users/yulw/StudioWorkspace/rcctrl/app/src/main/res/layout/fragment_shortcuts.xml -->

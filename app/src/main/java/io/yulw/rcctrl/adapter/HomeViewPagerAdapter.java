@@ -19,9 +19,9 @@ public class HomeViewPagerAdapter extends FragmentPagerAdapter {
     private final String TAG = "HomeViewPagerAdapter";
     ArrayList<String> mPagerTitles;
 
-    public HomeViewPagerAdapter(FragmentManager fm, ArrayList<String> pagerTitls) {
+    public HomeViewPagerAdapter(FragmentManager fm, ArrayList<String> pagerTitles) {
         super(fm);
-        mPagerTitles = pagerTitls;
+        mPagerTitles = pagerTitles;
     }
 
     @Override

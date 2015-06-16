@@ -1,101 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2">
+<items version="2" >
 
     <item
-        jar="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.melnykov\floatingactionbutton\1.1.0\jars\classes.jar"
-        jumboMode="false" revision="21.1.0" sha1="ee9ae2b87d57a33a7381c75d54db12bdf2995656">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-6b5b95e594df5ec1d67308b1828d7d30977a8589.jar" />
+        jar="D:\android-sdks\android-sdks\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-b6805892bfc50225b355314ece741f36c0a3116e.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
-        jumboMode="false" revision="21.1.0" sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-eecd2e9130b1d022a1585ef8dfb393794021282a.jar" />
+        jar="C:\Users\yulw\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.8.0\a517f29ed06be2b2879524fcd94b6e9b36e2e0b5\retrofit-1.8.0.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="a517f29ed06be2b2879524fcd94b6e9b36e2e0b5">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\retrofit-1.8.0-6ee95383a44e7d12f5c36517a4b4adc61e28928a.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
-        jumboMode="false" revision="21.1.0" sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\gson-2.3-a3d3cdd10d85735a8d7a5cfab1077c376e3d9a30.jar" />
+        jar="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.astuetz\pagerslidingtabstrip\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="7912610ed96381c25c36d986eba422731b9641b6">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-d48cae78f8e8e154f1976ab7c20a0e807b72db90.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
-        jumboMode="false" revision="21.1.0" sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-a0ae747b9636f6918d0805e5e1098ac26e05191d.jar" />
+        jar="C:\Users\yulw\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp-urlconnection\2.1.0\6025b7df8a6a4193138723ef120e7228b6a97024\okhttp-urlconnection-2.1.0.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="6025b7df8a6a4193138723ef120e7228b6a97024">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\okhttp-urlconnection-2.1.0-750cb350faf0a787b006afc912f8e302d778b9ce.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.8.0\a517f29ed06be2b2879524fcd94b6e9b36e2e0b5\retrofit-1.8.0.jar"
-        jumboMode="false" revision="21.1.0" sha1="a517f29ed06be2b2879524fcd94b6e9b36e2e0b5">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\retrofit-1.8.0-56fa0270d6fe13d5ad14c3fa3cd832eabee1761a.jar" />
+        jar="C:\Users\yulw\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.5\7941cd2c2c8ec006800d75c35f8a9dacf892ab93\otto-1.3.5.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="7941cd2c2c8ec006800d75c35f8a9dacf892ab93">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\otto-1.3.5-5628d10f79957b975f5800b18a0da6b9df878a17.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
-        jumboMode="false" revision="21.1.0" sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\library-2.4.0-dd460f45d27a359687729c3c169358b1eda3100b.jar" />
+        jar="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-db4399d1709d073b17a90e4102ef52220bf545ae.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
-        jumboMode="false" revision="21.1.0" sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-5cf3272c01f3a219262743f6612d49f6dd82339d.jar" />
+        jar="C:\Users\yulw\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\library-2.4.0-c29b00efed8cb8686353c3f11d10dc8c9be0fa3d.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp-urlconnection\2.1.0\6025b7df8a6a4193138723ef120e7228b6a97024\okhttp-urlconnection-2.1.0.jar"
-        jumboMode="false" revision="21.1.0" sha1="6025b7df8a6a4193138723ef120e7228b6a97024">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\okhttp-urlconnection-2.1.0-56a37dd2400723d8cf87caf55b617eaffd7e03aa.jar" />
+        jar="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-46a3fc07e36fb8e50562289856d2d4c92b7df6e9.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.astuetz\pagerslidingtabstrip\1.0.1\jars\classes.jar"
-        jumboMode="false" revision="21.1.0" sha1="7912610ed96381c25c36d986eba422731b9641b6">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-286ce784c09e3b01c423486ac9e97446bc5c6496.jar" />
+        jar="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-b4f03ee4833bae483a61af14d1811f318e76bc8c.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.4\3b646ddbdac8a33fc45b64564011da81d23e4635\picasso-2.3.4.jar"
-        jumboMode="false" revision="21.1.0" sha1="3b646ddbdac8a33fc45b64564011da81d23e4635">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\picasso-2.3.4-29bffb4ca9bde4dd0074608c3a4e7e915c8b7e51.jar" />
+        jar="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.melnykov\floatingactionbutton\1.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="ee9ae2b87d57a33a7381c75d54db12bdf2995656">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-661b760084ed00c40886a9671232c2b4ef2101b3.jar" />
     </item>
     <item
-        jar="D:\MyDocument\1.SunYatSenUniversity\android\android-sdks\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false" revision="21.1.0" sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-486e92d7b0c30bb3f2d95eae01cbc682d1526e67.jar" />
+        jar="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-3a90f1e40d532182328d64e14a8abfdfcdc70c15.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.5\7941cd2c2c8ec006800d75c35f8a9dacf892ab93\otto-1.3.5.jar"
-        jumboMode="false" revision="21.1.0" sha1="7941cd2c2c8ec006800d75c35f8a9dacf892ab93">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\otto-1.3.5-b9d1fbb28f983fefa4d9eb68a4b8c6f0a6928296.jar" />
+        jar="C:\Users\yulw\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\gson-2.3-8bbd7990f29800850a2dac3b7e046ad62e997cb9.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.1.0\9b51f7d0c19f179b52beab7cb433f8ba5cf786a4\okhttp-2.1.0.jar"
-        jumboMode="false" revision="21.1.0" sha1="9b51f7d0c19f179b52beab7cb433f8ba5cf786a4">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\okhttp-2.1.0-b6ca073afe34a3c7e61f2ab2568cf725eb1fc954.jar" />
+        jar="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-9488870aa4bb128debc1779670e29d48edea1a19.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
-        jumboMode="false" revision="21.1.0" sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-a1ed31ebdb9702cb83d3df9f1ae5ed79e6f9761f.jar" />
+        jar="C:\Users\yulw\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.0.1\39eff75ddcb987ff65888361a29f489c178429a3\okio-1.0.1.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="39eff75ddcb987ff65888361a29f489c178429a3">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\okio-1.0.1-16588d7830dbce07a65dbbf4fb519d2da0acd00e.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.3\jars\classes.jar"
-        jumboMode="false" revision="21.1.0" sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\classes-f8cf774686973a5fb564747f9d5f5b6fc1326ee0.jar" />
+        jar="C:\Users\yulw\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.4\3b646ddbdac8a33fc45b64564011da81d23e4635\picasso-2.3.4.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="3b646ddbdac8a33fc45b64564011da81d23e4635">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\picasso-2.3.4-12703403eaa7a75ced65390e6adcb3e8399805c3.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.0.1\39eff75ddcb987ff65888361a29f489c178429a3\okio-1.0.1.jar"
-        jumboMode="false" revision="21.1.0" sha1="39eff75ddcb987ff65888361a29f489c178429a3">
-        <dex
-            dex="C:\Users\Administrator\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\okio-1.0.1-fe84f675bf558aec97bd5f97205d62dbd02e157a.jar" />
+        jar="C:\Users\yulw\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.1.0\9b51f7d0c19f179b52beab7cb433f8ba5cf786a4\okhttp-2.1.0.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="9b51f7d0c19f179b52beab7cb433f8ba5cf786a4">
+        <dex dex="C:\Users\yulw\StudioWorkspace\rcctrl\app\build\intermediates\pre-dexed\debug\okhttp-2.1.0-bced777d5169323fb07e53ac7356db96b2da155b.jar" />
     </item>
 
 </items>
