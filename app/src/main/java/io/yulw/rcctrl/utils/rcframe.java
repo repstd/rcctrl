@@ -12,4 +12,12 @@ public interface rcframe {
 
     void loadAdditionalComponents();
 
+    void onRcStart();
+
+    void onRcPause();
+
+    void onRcResume();
+
+    void onRcStop();
+
 }

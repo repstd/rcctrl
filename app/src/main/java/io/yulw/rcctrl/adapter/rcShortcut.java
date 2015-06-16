@@ -44,4 +44,16 @@ public abstract class rcShortcut implements rcframe {
                 Log.d(TAG, "#loadToolbar#NullPointerException#" + e.getMessage()) ;
         }
     }
+
+    public void onRcStart() {
+    }
+
+    public void onRcPause() {
+    }
+
+    public void onRcResume() {
+    }
+
+    public void onRcStop() {
+    }
 }

@@ -65,4 +65,16 @@ public abstract class BaseActivity extends ActionBarActivity implements rcframe 
         mToolbar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));
 
     }
+
+    public void onRcStart() {
+    }
+
+    public void onRcPause() {
+    }
+
+    public void onRcResume() {
+    }
+
+    public void onRcStop() {
+    }
 }

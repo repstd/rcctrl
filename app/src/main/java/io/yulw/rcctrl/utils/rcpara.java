@@ -2,7 +2,6 @@ package io.yulw.rcctrl.utils;
 
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
-import android.net.LocalSocketAddress;
 import android.util.Log;
 
 import java.net.InetAddress;

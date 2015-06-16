@@ -72,7 +72,6 @@ public class rcLogShortcut extends rcShortcut {
         } catch (Exception e) {
             Log.d(TAG, "::loadAdditionalComponents#Exception" + e.getMessage());
         }
-        addLogbroadcastReceiver();
     }
     @Override
     protected void loadToolbar(final Activity activity, int toolbarId) {
@@ -101,7 +100,8 @@ public class rcLogShortcut extends rcShortcut {
             }
         });
     }
-    private void addLogbroadcastReceiver() {
+
+    private void addLogBroadcastReceiver() {
         IntentFilter intentFilter=new IntentFilter();
         intentFilter.addAction("LogServer");
         mBroadcastReceiver=new BroadcastReceiver() {
@@ -113,10 +113,31 @@ public class rcLogShortcut extends rcShortcut {
                 mLogTextView.setText(text+"\n"+log);
             }
         };
-        rcmanager.instance().addLogServer(mActivity, 1, 10);
+        rcmanager.instance().addLogServer(mActivity, 1, 100);
         LocalBroadcastManager.getInstance(mActivity.getApplicationContext()).registerReceiver(mBroadcastReceiver, intentFilter);
     }
     private void removeLogBroadcastReceiver() {
         LocalBroadcastManager.getInstance(mActivity.getApplicationContext()) .unregisterReceiver(mBroadcastReceiver);
+    }
+
+    @Override
+    public void onRcStart() {
+
+    }
+    @Override
+    public void onRcPause() {
+        removeLogBroadcastReceiver();
+    }
+    @Override
+    public void onRcResume() {
+        addLogBroadcastReceiver();
+        updateLogText();
+    }
+    @Override
+    public void onRcStop() {
+
+    }
+    private void updateLogText() {
+        mLogTextView.setText(mLogTextView.getText().toString()+"\n"+rcmanager.instance().getLog());
     }
 }

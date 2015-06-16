@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import io.yulw.rcctrl.utils.rcframe;
+import io.yulw.rcctrl.utils.rcutil;
 
 public abstract class BaseFragment extends Fragment implements rcframe {
     protected Context mContext;
@@ -22,6 +23,30 @@ public abstract class BaseFragment extends Fragment implements rcframe {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        onRcStart();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        onRcResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        onRcPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        onRcStop();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         mActivity = null;
@@ -29,5 +54,17 @@ public abstract class BaseFragment extends Fragment implements rcframe {
     }
     public void unLoadAdditionalComponents() {
        //Not Implemented
+    }
+
+    public void onRcStart() {
+    }
+
+    public void onRcPause() {
+    }
+
+    public void onRcResume() {
+    }
+
+    public void onRcStop() {
     }
 }

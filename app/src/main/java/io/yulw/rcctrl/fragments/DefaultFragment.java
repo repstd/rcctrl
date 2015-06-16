@@ -20,7 +20,6 @@ import java.util.HashMap;
 import io.yulw.rcctrl.R;
 import io.yulw.rcctrl.utils.rccontrol;
 import io.yulw.rcctrl.utils.rctask;
-import io.yulw.rcctrl.utils.rcutil;
 import io.yulw.rcctrl.utils.rcworker;
 
 public class DefaultFragment extends BaseFragment {
@@ -114,7 +113,6 @@ public class DefaultFragment extends BaseFragment {
 
     private String encodeMsg() {
         mCmd_name = this.mEditTextProgram.getText().toString();
-        rcutil.showMessageAsToast(getActivity().getApplicationContext(), "encodeMsg.current: " + mCmd_name + " " + mCmd_op);
         /*
          * @yulw,message to be sent to the rchost.eg. rcrender_on
 		 */

@@ -9,6 +9,8 @@ import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.util.Log;
 
+import java.util.Queue;
+
 public class rcmanager {
     private static rcmanager mInst = null;
     private Handler mHomeActivityHandler;
@@ -16,7 +18,7 @@ public class rcmanager {
     private int mLastPort;
     private rcpara mCurPara;
     private WifiManager mWifi;
-    private rcserver mSvr=null;
+    private rcLogServer mSvr = null;
     private final String TAG="rcmanager";
     private final int mLogServerPort=20716;
     private boolean mIsLogServerRunning=false;
@@ -25,8 +27,8 @@ public class rcmanager {
     {
         //@yulw,default paremeters
         mLastPort = 20714;
-        mLastHostName = "10.108.61.29";
-        //mLastHostName = "10.108.59.160";
+        //mLastHostName = "10.108.61.29";
+        mLastHostName = "10.108.59.160";
         mWifi = null;
         mCurPara = null;
     }
@@ -82,14 +84,14 @@ public class rcmanager {
     }
     synchronized  public void addLogServer() {
         Log.d(TAG,"Start");
-        mSvr=new rcserver(mActivity,10,100);
+        mSvr = new rcLogServer(mActivity, 10, 100);
         mSvr.start();
         mIsLogServerRunning=true;
     }
     synchronized  public void addLogServer(Activity activity,int threadCnt,int bufMsgCnt) {
         mActivity=activity;
         Log.d(TAG,"Start");
-        mSvr=new rcserver(mActivity,threadCnt,bufMsgCnt);
+        mSvr = new rcLogServer(mActivity, threadCnt, bufMsgCnt);
         mSvr.start();
         mIsLogServerRunning=true;
     }
@@ -103,4 +105,8 @@ public class rcmanager {
     public int getLogServerPort() {
         return mLogServerPort;
     }
+    public String getLog() {
+        return mSvr.getLogs();
+    }
+
 }

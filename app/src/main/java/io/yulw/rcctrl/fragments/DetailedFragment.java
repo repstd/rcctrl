@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.yulw.rcctrl.utils.rcframe;
+import io.yulw.rcctrl.utils.rcutil;
 
 public class DetailedFragment<T extends rcframe> extends BaseFragment {
     private T mDetailedImpl;
@@ -52,6 +53,22 @@ public class DetailedFragment<T extends rcframe> extends BaseFragment {
 
     public void setImpl(T impl) {
         mDetailedImpl = impl;
+    }
+
+    public void onRcStart() {
+        getImpl().onRcStart();
+    }
+
+    public void onRcPause() {
+        getImpl().onRcPause();
+    }
+
+    public void onRcResume() {
+        getImpl().onRcResume();
+    }
+
+    public void onRcStop() {
+        getImpl().onRcStop();
     }
 
 }

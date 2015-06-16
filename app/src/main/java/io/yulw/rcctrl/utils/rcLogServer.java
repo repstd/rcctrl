@@ -24,14 +24,15 @@ class rcReceiverTask implements rctask
     private final String TAG="rcReceiverTask";
     private boolean mIsFinished;
     private Context m_context;
-    private rcserver m_svr;
+    private rcLogServer m_svr;
     private DatagramSocket m_socket;
     private int mTimeout;
-    public rcReceiverTask(Context context,rcserver svr) {
+
+    public rcReceiverTask(Context context, rcLogServer svr) {
         m_context=context;
         m_svr=svr;
         mIsFinished=false;
-        mTimeout=50;
+        mTimeout = 30;
         try  {
             m_socket=new DatagramSocket(rcmanager.instance().getLogServerPort());
             m_socket.setReuseAddress(true);
@@ -86,6 +87,7 @@ class rcReceiverTask implements rctask
         intent.putExtra("log", log);
         m_svr.appendBuffer(log);
         Log.d(TAG, "::execute#" + log);
+        rcutil.showMessageAsToast(m_context, "newLog:#" + log);
         if(m_context!=null)
             LocalBroadcastManager.getInstance(m_context).sendBroadcast(intent);
     }
@@ -100,9 +102,9 @@ class rcReceiverTask implements rctask
     }
 }
 
-public class rcserver
+public class rcLogServer
 {
-    private final String TAG = "rcserver";
+    private final String TAG = "rcLogServer";
     int m_thCapacity;
     int m_msgCapacity;
     Handler m_handler = null;
@@ -110,14 +112,14 @@ public class rcserver
     Queue<String> m_msg;
     Activity m_Activity;
     @SuppressLint("UseSparseArrays")
-    public rcserver(int threadCapacity, int msgCapacity) {
+    public rcLogServer(int threadCapacity, int msgCapacity) {
         m_thCapacity = threadCapacity;
         m_msgCapacity = msgCapacity;
         m_workers = new HashMap<Integer, rcworker<rcReceiverTask>>();
         m_msg = new LinkedList<String>();
     }
 
-    public rcserver(Handler handler, int threadCapacity, int msgCapacity) {
+    public rcLogServer(Handler handler, int threadCapacity, int msgCapacity) {
         m_thCapacity = threadCapacity;
         m_msgCapacity = msgCapacity;
         m_workers = new HashMap<Integer, rcworker<rcReceiverTask>>();
@@ -125,7 +127,7 @@ public class rcserver
         m_handler = handler;
     }
 
-    public rcserver(Activity activity, int threadCapacity, int msgCapacity) {
+    public rcLogServer(Activity activity, int threadCapacity, int msgCapacity) {
         m_thCapacity = threadCapacity;
         m_msgCapacity = msgCapacity;
         m_workers = new HashMap<Integer, rcworker<rcReceiverTask>>();
